@@ -1,33 +1,27 @@
-// تحميل التجميعات الجاهزة
-fetch('builds.json')
-    .then(res => res.json())
-    .then(data => {
-        const container = document.getElementById('builds-container');
-        data.forEach(build => {
-            container.innerHTML += `
-                <div class="card">
-                    <h3>${build.title}</h3>
-                    <p>السعر: <strong>${build.price}</strong></p>
-                    <a href="${build.link}" target="_blank" class="buy-btn">عرض التفاصيل</a>
-                </div>`;
-        });
+// جلب وعرض قطع التجميع اليدوي
+fetch('parts.json').then(res => res.json()).then(data => {
+    populateSelect('cpu-select', data.cpus);
+    populateSelect('gpu-select', data.gpus);
+    populateSelect('mobo-select', data.motherboards);
+    populateSelect('ram-select', data.ram);
+    populateSelect('storage-select', data.storage);
+    populateSelect('psu-select', data.psu);
+    calculateTotal();
+}).catch(err => console.error("خطأ في تحميل البيانات:", err));
+
+function populateSelect(id, items) {
+    const select = document.getElementById(id);
+    if (!select || !items) return;
+    select.innerHTML = items.map(item => `<option value="${item.price}">${item.name} (+${item.price}$)</option>`).join('');
+}
+
+function calculateTotal() {
+    const ids = ['cpu-select', 'gpu-select', 'mobo-select', 'ram-select', 'storage-select', 'psu-select'];
+    let total = 0;
+    ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) total += parseInt(el.value) || 0;
     });
-
-// تحميل القطع لصفحة "جمع جهازك"
-fetch('parts.json')
-    .then(res => res.json())
-    .then(data => {
-        const cpuSelect = document.getElementById('cpu-select');
-        const gpuSelect = document.getElementById('gpu-select');
-
-        data.cpus.forEach(item => cpuSelect.innerHTML += `<option value="${item.price}">${item.name} - ${item.price}$</option>`);
-        data.gpus.forEach(item => gpuSelect.innerHTML += `<option value="${item.price}">${item.name} - ${item.price}$</option>`);
-        updateBuilder();
-    });
-
-function updateBuilder() {
-    const cpuPrice = parseInt(document.getElementById('cpu-select').value) || 0;
-    const gpuPrice = parseInt(document.getElementById('gpu-select').value) || 0;
-    document.getElementById('total-price').innerText = cpuPrice + gpuPrice;
+    document.getElementById('total-price').innerText = total;
 }
 
