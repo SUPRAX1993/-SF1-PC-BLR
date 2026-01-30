@@ -1,23 +1,33 @@
-// جلب البيانات من ملف JSON
+// تحميل التجميعات الجاهزة
 fetch('builds.json')
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
-        const app = document.getElementById('app');
-        app.innerHTML = ''; // مسح كلمة "جاري التحميل"
-
+        const container = document.getElementById('builds-container');
         data.forEach(build => {
-            const card = `
+            container.innerHTML += `
                 <div class="card">
                     <h3>${build.title}</h3>
-                    <p>السعر المخطط: <strong>${build.price}</strong></p>
-                    <ul>
-                        ${build.specs.map(spec => `<li>${spec}</li>`).join('')}
-                    </ul>
-                    <a href="${build.link}" target="_blank" class="buy-btn">تفاصيل الشراء (Affiliate)</a>
-                </div>
-            `;
-            app.innerHTML += card;
+                    <p>السعر: <strong>${build.price}</strong></p>
+                    <a href="${build.link}" target="_blank" class="buy-btn">عرض التفاصيل</a>
+                </div>`;
         });
-    })
-    .catch(err => console.error('خطأ في تحميل البيانات:', err));
+    });
+
+// تحميل القطع لصفحة "جمع جهازك"
+fetch('parts.json')
+    .then(res => res.json())
+    .then(data => {
+        const cpuSelect = document.getElementById('cpu-select');
+        const gpuSelect = document.getElementById('gpu-select');
+
+        data.cpus.forEach(item => cpuSelect.innerHTML += `<option value="${item.price}">${item.name} - ${item.price}$</option>`);
+        data.gpus.forEach(item => gpuSelect.innerHTML += `<option value="${item.price}">${item.name} - ${item.price}$</option>`);
+        updateBuilder();
+    });
+
+function updateBuilder() {
+    const cpuPrice = parseInt(document.getElementById('cpu-select').value) || 0;
+    const gpuPrice = parseInt(document.getElementById('gpu-select').value) || 0;
+    document.getElementById('total-price').innerText = cpuPrice + gpuPrice;
+}
 

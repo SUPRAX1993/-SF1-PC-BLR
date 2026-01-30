@@ -1,25 +1,53 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X3CRJB44J2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-X3CRJB44J2');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تجميعات SUPRA Tech</title>
+    <title>SF1-PC-BLR | تجميعات احترافية</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>تجميعات الكمبيوتر الاحترافية</h1>
+        <h1>SF1-PC-BLR</h1>
         <nav>
             <ul>
-                <li><a href="#">الرئيسية</a></li>
-                <li><a href="#">تجميعات جاهزة</a></li>
-                <li><a href="#">جمع جهازك</a></li>
+                <li><a href="#ready-builds">تجميعات جاهزة</a></li>
+                <li><a href="#pc-builder">جمع جهازك</a></li>
             </ul>
         </nav>
     </header>
 
     <main id="app">
-        <p style="text-align:center;">جاري تحميل التجميعات...</p>
+        <section id="ready-builds">
+            <h2>تجميعات مختارة</h2>
+            <div id="builds-container"></div>
+        </section>
+
+        <hr>
+
+        <section id="pc-builder">
+            <h2>ركّب تجميعتك بنفسك</h2>
+            <div class="card">
+                <label>اختر المعالج (CPU):</label>
+                <select id="cpu-select" onchange="updateBuilder()"></select>
+                
+                <label>اختر كارت الشاشة (GPU):</label>
+                <select id="gpu-select" onchange="updateBuilder()"></select>
+
+                <div style="margin-top: 20px; font-weight: bold;">
+                    المجموع التقريبي: <span id="total-price" style="color: #2962ff; font-size: 1.5rem;">0</span>$
+                </div>
+                <p style="font-size: 0.8rem; color: #777;">* الأسعار تقريبية وقد تختلف حسب المتجر.</p>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>
