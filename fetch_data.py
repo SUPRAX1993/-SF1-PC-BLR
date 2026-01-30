@@ -1,4 +1,23 @@
 import requests
+
+def get_cpus():
+    url = 'https://query.wikidata.org/sparql'
+    # استعلام لجلب معالجات إنتل
+    query = """
+    SELECT ?itemLabel WHERE {
+      ?item wdt:P31 wd:Q1616142; # Intel Core
+            wdt:P178 wd:Q113;    # Manufacturer: Intel
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "ar,en". }
+    } LIMIT 50
+    """
+    r = requests.get(url, params={'format': 'json', 'query': query})
+    data = r.json()
+    for result in data['results']['bindings']:
+        print(result['itemLabel']['value'])
+
+get_cpus()
+
+import requests
 import json
 
 def fetch_and_update():
