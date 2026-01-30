@@ -1,8 +1,44 @@
 {
     "cpus": [],
     "gpus": [],
-    "motherboards": [],
-    "ram": [],
-    "storage": [],
-    "psu": []
+    "motherboards": [
+        {
+            "name": "B760M Gaming",
+            "price": 150
+        },
+        {
+            "name": "X670E Motherboard",
+            "price": 300
+        }
+    ],
+    "ram": [
+        {
+            "name": "16GB DDR4",
+            "price": 50
+        },
+        {
+            "name": "32GB DDR5",
+            "price": 120
+        }
+    ],
+    "storage": [
+        {
+            "name": "1TB NVMe SSD",
+            "price": 80
+        },
+        {
+            "name": "2TB HDD",
+            "price": 60
+        }
+    ],
+    "psu": [
+        {
+            "name": "650W Gold",
+            "price": 90
+        },
+        {
+            "name": "850W Platinum",
+            "price": 160
+        }
+    ]
 }

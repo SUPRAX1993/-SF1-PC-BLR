@@ -1,60 +1,73 @@
 import requests
-
-def get_cpus():
-    url = 'https://query.wikidata.org/sparql'
-    # استعلام لجلب معالجات إنتل
-    query = """
-    SELECT ?itemLabel WHERE {
-      ?item wdt:P31 wd:Q1616142; # Intel Core
-            wdt:P178 wd:Q113;    # Manufacturer: Intel
-      SERVICE wikibase:label { bd:serviceParam wikibase:language "ar,en". }
-    } LIMIT 50
-    """
-    r = requests.get(url, params={'format': 'json', 'query': query})
-    data = r.json()
-    for result in data['results']['bindings']:
-        print(result['itemLabel']['value'])
-
-get_cpus()
-
-import requests
 import json
 
-def fetch_and_update():
+def fetch_hardware():
     url = 'https://query.wikidata.org/sparql'
-    # استعلام لجلب موديلات معالجات Intel و AMD
+    
+    # استعلام سريع يجلب أفضل 30 معالج و 30 كارت شاشة
     query = """
-    SELECT ?itemLabel WHERE {
-      ?item wdt:P31 wd:Q1616142. 
+    SELECT ?itemLabel ?type WHERE {
+      {
+        ?item wdt:P31 wd:Q1616142. # CPUs
+        BIND("cpu" AS ?type)
+      } UNION {
+        ?item wdt:P31 wd:Q12857444. # GPUs
+        BIND("gpu" AS ?type)
+      }
       SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
-    } LIMIT 100
+    } LIMIT 60
     """
+    
+    print("⏳ جاري سحب البيانات من Wikidata... انتظر ثواني...")
+    
     try:
-        r = requests.get(url, params={'format': 'json', 'query': query})
-        data = r.json()
+        response = requests.get(url, params={'format': 'json', 'query': query}, timeout=15)
+        data = response.json()
         
-        new_cpus = []
+        cpus = []
+        gpus = []
+
         for result in data['results']['bindings']:
             name = result['itemLabel']['value']
-            # وضع سعر افتراضي 200$ لأن Wikidata لا توفر أسعار
-            new_cpus.append({"name": name, "price": 200})
+            item_type = result['type']['value']
+            
+            if item_type == "cpu":
+                cpus.append({"name": name, "price": 250})
+            else:
+                gpus.append({"name": name, "price": 500})
 
-        # قراءة الملف الحالي لإضافة البيانات له
-        with open('parts.json', 'r') as f:
-            current_data = json.load(f)
+        # تجهيز هيكل البيانات الكامل
+        full_data = {
+            "cpus": cpus,
+            "gpus": gpus,
+            "motherboards": [
+                {"name": "B760M Gaming", "price": 150},
+                {"name": "X670E Motherboard", "price": 300}
+            ],
+            "ram": [
+                {"name": "16GB DDR4", "price": 50},
+                {"name": "32GB DDR5", "price": 120}
+            ],
+            "storage": [
+                {"name": "1TB NVMe SSD", "price": 80},
+                {"name": "2TB HDD", "price": 60}
+            ],
+            "psu": [
+                {"name": "650W Gold", "price": 90},
+                {"name": "850W Platinum", "price": 160}
+            ]
+        }
 
-        # تحديث قائمة المعالجات فقط
-        current_data['cpus'] = new_cpus
-
-        # حفظ الملف من جديد
-        with open('parts.json', 'w') as f:
-            json.dump(current_data, f, indent=4)
+        # حفظ البيانات في الملف
+        with open('parts.json', 'w', encoding='utf-8') as f:
+            json.dump(full_data, f, indent=4, ensure_ascii=False)
         
-        print("✅ تم تحديث ملف parts.json بـ 100 معالج من Wikidata!")
-    
+        print(f"✅ تم بنجاح! جلبنا {len(cpus)} معالج و {len(gpus)} كارت شاشة.")
+        print("🚀 الآن ارفع الملفات لـ GitHub.")
+
     except Exception as e:
-        print(f"❌ حدث خطأ: {e}")
+        print(f"❌ خطأ: {e}")
 
 if __name__ == "__main__":
-    fetch_and_update()
+    fetch_hardware()
 
