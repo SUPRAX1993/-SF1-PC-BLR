@@ -1,56 +1,75 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X3CRJB44J2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-X3CRJB44J2');
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SF1-PC-BLR | تجميعات احترافية</title>
-    <link rel="stylesheet" href="style.css">
+    <title>SF1-PC-BLR Pro Builder</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; color: #333; }
+        header { text-align: center; margin-bottom: 30px; }
+        h1 { color: #1a73e8; margin: 0; font-size: 2.5rem; }
+        p { color: #666; }
+        
+        .builder-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* القسم الأيمن: القوائم */
+        .controls { flex: 2; min-width: 300px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .control-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #444; }
+        select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; transition: 0.3s; }
+        select:focus { border-color: #1a73e8; outline: none; }
+
+        /* القسم الأيسر: المعاينة والصور */
+        .preview { flex: 1; min-width: 300px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; position: sticky; top: 20px; height: fit-content; }
+        .preview h2 { margin-top: 0; color: #333; }
+        .total-box { background: #e8f0fe; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
+        .total-price { font-size: 2rem; color: #1a73e8; font-weight: bold; }
+        
+        #part-image { width: 100%; max-width: 300px; height: 300px; object-fit: contain; border-radius: 10px; border: 1px dashed #ccc; padding: 10px; background: #fafafa; transition: 0.3s; }
+        
+        .buy-btn { display: block; width: 100%; padding: 15px; background: #28a745; color: white; border: none; border-radius: 8px; font-size: 1.2rem; cursor: pointer; margin-top: 20px; transition: 0.2s; }
+        .buy-btn:hover { background: #218838; }
+    </style>
 </head>
 <body>
+
     <header>
-        <h1>SF1-PC-BLR</h1>
-        <nav>
-            <ul>
-                <li><a href="#ready-builds">تجميعات جاهزة</a></li>
-                <li><a href="#pc-builder">جمع جهازك</a></li>
-            </ul>
-        </nav>
+        <h1>SF1-PC-BLR Pro</h1>
+        <p>موسوعة التجميع الاحترافية الشاملة</p>
     </header>
 
-    <main id="app">
-        <section id="ready-builds">
-            <h2>تجميعات مختارة</h2>
-            <div id="builds-container"></div>
-        </section>
+    <div class="builder-container">
+        <div class="controls">
+            <h3>اختر قطع جهازك:</h3>
+            <div class="control-group"><label>🔌 المعالج (CPU)</label><select id="cpu-select"></select></div>
+            <div class="control-group"><label>🎮 كارت الشاشة (GPU)</label><select id="gpu-select"></select></div>
+            <div class="control-group"><label>📟 اللوحة الأم (Motherboard)</label><select id="mobo-select"></select></div>
+            <div class="control-group"><label>💾 الرامات (RAM)</label><select id="ram-select"></select></div>
+            <div class="control-group"><label>💿 التخزين (Storage)</label><select id="storage-select"></select></div>
+            <div class="control-group"><label>❄️ المبرد (Cooler)</label><select id="cooler-select"></select></div>
+            <div class="control-group"><label>📦 الصندوق (Case)</label><select id="case-select"></select></div>
+            <div class="control-group"><label>⚡ مزود الطاقة (PSU)</label><select id="psu-select"></select></div>
+        </div>
 
-        <hr>
-
-<section id="pc-builder">
-    <h2>ركّب تجميعتك بنفسك</h2>
-    <div class="card">
-        <label>المعالج (CPU):</label> <select id="cpu-select" onchange="calculateTotal()"></select>
-        <label>كارت الشاشة (GPU):</label> <select id="gpu-select" onchange="calculateTotal()"></select>
-        <label>اللوحة الأم (Mobo):</label> <select id="mobo-select" onchange="calculateTotal()"></select>
-        <label>الرامات (RAM):</label> <select id="ram-select" onchange="calculateTotal()"></select>
-        <label>التخزين (Storage):</label> <select id="storage-select" onchange="calculateTotal()"></select>
-        <label>مزود الطاقة (PSU):</label> <select id="psu-select" onchange="calculateTotal()"></select>
-
-        <div style="margin-top: 25px; border-top: 2px solid #eee; padding-top: 15px;">
-            <h3 style="margin:0;">المجموع الكلي: <span id="total-price" style="color: #2962ff;">0</span>$</h3>
+        <div class="preview">
+            <div class="total-box">
+                <span>المجموع الكلي</span>
+                <div class="total-price">$<span id="total-price">0</span></div>
+            </div>
+            
+            <img id="part-image" src="https://placehold.co/400x400/eee/999?text=اختر+قطعة" alt="صورة القطعة">
+            
+            <p id="part-name-display" style="margin-top:10px; color:#555;">لم يتم اختيار قطعة</p>
+            
+            <button class="buy-btn" onclick="alert('قريباً: سيتم تحويلك للشراء!')">✅ اعتماد التجميعة</button>
         </div>
     </div>
-</section>
-
-  
-    </main>
 
     <script src="script.js"></script>
 </body>
