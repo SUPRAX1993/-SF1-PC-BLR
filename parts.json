@@ -1,44 +1,82 @@
 {
-    "cpus": [],
-    "gpus": [],
-    "motherboards": [
+    "cpus": [
         {
-            "name": "B760M Gaming",
-            "price": 150
+            "name": "Intel Core i9-14900K",
+            "price": 580
         },
         {
-            "name": "X670E Motherboard",
+            "name": "AMD Ryzen 7 7800X3D",
+            "price": 450
+        },
+        {
+            "name": "Intel Core i5-13600K",
+            "price": 320
+        },
+        {
+            "name": "AMD Ryzen 5 7600X",
+            "price": 230
+        }
+    ],
+    "gpus": [
+        {
+            "name": "NVIDIA GeForce RTX 4090",
+            "price": 1600
+        },
+        {
+            "name": "NVIDIA GeForce RTX 4070 Super",
+            "price": 600
+        },
+        {
+            "name": "AMD Radeon RX 7800 XT",
+            "price": 500
+        },
+        {
+            "name": "NVIDIA GeForce RTX 4060",
             "price": 300
+        }
+    ],
+    "motherboards": [
+        {
+            "name": "ASUS ROG Strix Z790",
+            "price": 350
+        },
+        {
+            "name": "MSI B650 Tomahawk",
+            "price": 200
+        },
+        {
+            "name": "Gigabyte B760M DS3H",
+            "price": 110
         }
     ],
     "ram": [
         {
-            "name": "16GB DDR4",
-            "price": 50
+            "name": "Corsair Vengeance 32GB DDR5",
+            "price": 120
         },
         {
-            "name": "32GB DDR5",
-            "price": 120
+            "name": "G.Skill Trident Z5 16GB",
+            "price": 80
         }
     ],
     "storage": [
         {
-            "name": "1TB NVMe SSD",
-            "price": 80
+            "name": "Samsung 990 Pro 1TB",
+            "price": 100
         },
         {
-            "name": "2TB HDD",
-            "price": 60
+            "name": "Crucial P3 2TB",
+            "price": 130
         }
     ],
     "psu": [
         {
-            "name": "650W Gold",
-            "price": 90
+            "name": "EVGA 750W Gold",
+            "price": 100
         },
         {
-            "name": "850W Platinum",
-            "price": 160
+            "name": "Corsair RM1000x",
+            "price": 180
         }
     ]
 }
