@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "title": "تجميعة الأداء المتوسط - RTX 4060",
+        "price": "950$",
+        "specs": ["Core i5-13400F", "RTX 4060 8GB", "16GB RAM DDR5"],
+        "link": "https://amazon.com/your-affiliate-link"
+    },
+    {
+        "id": 2,
+        "title": "تجميعة الاقتصادية - GTX 1650",
+        "price": "500$",
+        "specs": ["Core i3-12100F", "GTX 1650", "8GB RAM"],
+        "link": "https://amazon.com/your-affiliate-link"
+    }
+]
+
