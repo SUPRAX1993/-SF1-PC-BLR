@@ -14,48 +14,49 @@
     </script>
 
     <style>
-body.dark-mode { background: #121212; color: #e0e0e0; }
-body.dark-mode .controls, body.dark-mode .preview { background: #1e1e1e; color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-body.dark-mode select { background: #2d2d2d; color: #fff; border-color: #444; }
-body.dark-mode label { color: #bbb; }
-body.dark-mode .total-box { background: #0d47a1; border-color: #1976d2; }
-body.dark-mode .status-box { background: #2d2d2d; color: #fff; border-color: #444; }
- 
-       body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; color: #333; }
-        header { text-align: center; margin-bottom: 30px; }
-        h1 { color: #1a73e8; margin: 0; font-size: 2.2rem; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; color: #333; transition: 0.3s; }
+        body.dark-mode { background: #121212; color: #e0e0e0; }
         
+        header { text-align: center; margin-bottom: 30px; }
+        h1 { color: #1a73e8; margin: 0; }
+
         .builder-container { display: flex; flex-wrap: wrap; gap: 20px; max-width: 1200px; margin: 0 auto; }
         
-        /* القسم الأيمن: القوائم */
-        .controls { flex: 2; min-width: 300px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .control-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; color: #444; font-size: 0.9rem; }
-        select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; background: #fafafa; }
+        .controls, .preview { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .controls { flex: 2; min-width: 300px; }
+        .preview { flex: 1; min-width: 300px; text-align: center; position: sticky; top: 20px; height: fit-content; }
         
-        /* القسم الأيسر: المعاينة والفحص */
-        .preview { flex: 1; min-width: 300px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; position: sticky; top: 20px; height: fit-content;<button id="share-btn" class="buy-btn" style="background: #007bff; margin-top: 10px;">📋 نسخ التجميعة للمشاركة</button>
- }
-        
+        body.dark-mode .controls, body.dark-mode .preview { background: #1e1e1e; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+
+        .control-group { margin-bottom: 15px; text-align: right; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; background: #fafafa; }
+        body.dark-mode select { background: #2d2d2d; color: white; border-color: #444; }
+
         .total-box { background: #e8f0fe; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #1a73e8; }
         .total-price { font-size: 2rem; color: #1a73e8; font-weight: bold; }
+        body.dark-mode .total-box { background: #0d47a1; color: white; }
 
-        /* صناديق التوافق وعنق الزجاجة */
-        .status-box { padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 0.95rem; font-weight: 500; border: 1px solid #ddd; background: #f9f9f9; transition: 0.3s; }
+        .status-box { padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 0.9rem; border: 1px solid #ddd; background: #f9f9f9; }
+        body.dark-mode .status-box { background: #2d2d2d; border-color: #444; }
+
+        #part-image { width: 100%; max-width: 250px; height: 250px; object-fit: contain; margin: 15px 0; }
         
-        #part-image { width: 100%; max-width: 250px; height: 250px; object-fit: contain; margin: 15px 0; border-radius: 10px; padding: 10px; background: #fff; border: 1px solid #eee; }
+        .btn-group { display: flex; flex-direction: column; gap: 10px; }
+        .btn { padding: 15px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem; color: white; transition: 0.2s; }
+        .btn-buy { background: #28a745; }
+        .btn-share { background: #007bff; }
         
-        #part-name-display { font-weight: bold; color: #555; margin-bottom: 15px; min-height: 1.2em; }
-        
-        .buy-btn { display: block; width: 100%; padding: 15px; background: #28a745; color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; font-weight: bold; }
+        #dark-mode-toggle { position: fixed; top: 10px; left: 10px; padding: 10px; border-radius: 50%; border: none; cursor: pointer; background: #333; color: white; font-size: 1.2rem; }
     </style>
 </head>
-<body> <button id="dark-mode-toggle" style="position: fixed; top: 10px; left: 10px; z-index: 1000; padding: 10px; border-radius: 50%; border: none; cursor: pointer; background: #333; color: white;">🌙</button>
+<body>
 
+    <button id="dark-mode-toggle">🌙</button>
 
     <header>
         <h1>SF1-PC-BLR Pro</h1>
-        <p>فحص التوافق وعنق الزجاجة الذكي</p>
+        <p>النسخة المتكاملة الذكية</p>
     </header>
 
     <div class="builder-container">
@@ -72,17 +73,20 @@ body.dark-mode .status-box { background: #2d2d2d; color: #fff; border-color: #44
 
         <div class="preview">
             <div class="total-box">
-                <span style="color: #555;">المجموع التقديري</span>
+                <span>المجموع الكلي</span>
                 <div class="total-price">$<span id="total-price">0</span></div>
             </div>
 
-            <div id="compatibility-check" class="status-box">الحالة: بانتظار اختيار القطع...</div>
+            <div id="compatibility-check" class="status-box">انتظار اختيار القطع...</div>
             <div id="bottleneck-check" class="status-box">عنق الزجاجة: --</div>
 
-            <img id="part-image" src="https://placehold.co/400x400/eee/999?text=معاينة+القطعة" alt="Part Image">
-            <div id="part-name-display"></div>
+            <img id="part-image" src="https://placehold.co/400x400/eee/999?text=Preview" alt="Part Image">
+            <div id="part-name-display" style="margin-bottom:15px; font-weight:bold;"></div>
 
-            <button class="buy-btn" onclick="window.print()">🖨️ طباعة التجميعة</button>
+            <div class="btn-group">
+                <button class="btn btn-buy" onclick="window.print()">🖨️ طباعة التجميعة</button>
+                <button id="share-btn" class="btn btn-share">📋 نسخ التجميعة للمشاركة</button>
+            </div>
         </div>
     </div>
 

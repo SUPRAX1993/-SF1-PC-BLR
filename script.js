@@ -1,240 +1,143 @@
 let fullData = {};
 
-// 1. جلب البيانات عند فتح الموقع
+// 1. تحميل البيانات والبدء
 fetch('parts.json')
     .then(res => res.json())
     .then(data => {
         fullData = data;
-        console.log("✅ تم تحميل البيانات:", data);
-
-        // تعبئة القوائم
-        populateSelect('cpu-select', data.cpus);
-        populateSelect('gpu-select', data.gpus);
-        populateSelect('mobo-select', data.motherboards);
-        populateSelect('ram-select', data.ram);
-        populateSelect('storage-select', data.storage);
-        populateSelect('cooler-select', data.coolers);
-        populateSelect('case-select', data.cases);
-        populateSelect('psu-select', data.psu);
-
-        // تشغيل المراقبين
+        populateAllSelects(data);
         setupListeners();
-    })
-    .catch(err => console.error("❌ خطأ في تحميل الملف:", err));
+        loadSavedConfiguration(); // استرجاع ما حفظه المستخدم سابقاً
+    });
 
-// 2. دالة تعبئة القوائم (تضيف المعلومات داخل الزر المخفي)
-function populateSelect(elementId, items) {
-    const select = document.getElementById(elementId);
+function populateAllSelects(data) {
+    populateSelect('cpu-select', data.cpus);
+    populateSelect('gpu-select', data.gpus);
+    populateSelect('mobo-select', data.motherboards);
+    populateSelect('ram-select', data.ram);
+    populateSelect('storage-select', data.storage);
+    populateSelect('cooler-select', data.coolers);
+    populateSelect('case-select', data.cases);
+    populateSelect('psu-select', data.psu);
+}
+
+function populateSelect(id, items) {
+    const select = document.getElementById(id);
     if (!select) return;
-
-    // الخيار الافتراضي
     select.innerHTML = '<option value="0" data-name="none">-- اختر قطعة --</option>';
-
     items.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.price; // قيمة الخيار هي السعر
-        option.text = `${item.name} (${item.price}$)`;
-        
-        // تخزين البيانات التقنية داخل العنصر نفسه لسهولة الوصول
-        option.dataset.name = item.name;
-        option.dataset.image = item.image || "https://placehold.co/400x400/eee/999?text=No+Image";
-        option.dataset.socket = item.socket || ""; // تخزين السوكيت
-        option.dataset.tier = item.tier || "";     // تخزين القوة
-        
-        select.appendChild(option);
+        const opt = document.createElement('option');
+        opt.value = item.price;
+        opt.text = `${item.name} (${item.price}$)`;
+        opt.dataset.name = item.name;
+        opt.dataset.image = item.image;
+        opt.dataset.socket = item.socket || "";
+        opt.dataset.tier = item.tier || 0;
+        select.appendChild(opt);
     });
 }
 
-// 3. مراقبة التغييرات
-function setupListeners() {
-    const ids = ['cpu-select', 'gpu-select', 'mobo-select', 'ram-select', 'storage-select', 'cooler-select', 'case-select', 'psu-select'];
-    
-    ids.forEach(id => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.addEventListener('change', function() {
-                updatePreview(this);    // تحديث الصورة
-                calculateAndCheck();    // تحديث السعر والفحص
-            });
-        }
-    });
-}
-
-// 4. تحديث صورة المعاينة
-function updatePreview(selectElement) {
-    const selectedOption = selectElement.options[selectElement.selectedIndex];
-    const imgUrl = selectedOption.dataset.image;
-    const name = selectedOption.dataset.name;
-
-    const imgBox = document.getElementById('part-image');
-    const nameBox = document.getElementById('part-name-display');
-
-    if (imgBox && nameBox && name !== "none") {
-        imgBox.src = imgUrl;
-        nameBox.innerText = name;
-    }
-}
-
-// 5. المحرك الرئيسي: حساب السعر + فحص التوافق
-function calculateAndCheck() {
-    // --- أولاً: حساب السعر الإجمالي ---
-    const ids = ['cpu-select', 'gpu-select', 'mobo-select', 'ram-select', 'storage-select', 'cooler-select', 'case-select', 'psu-select'];
-    let total = 0;
-    
-    ids.forEach(id => {
-        const val = parseInt(document.getElementById(id).value) || 0;
-        total += val;
-    });
-    document.getElementById('total-price').innerText = total;
-
-    // --- ثانياً: جلب بيانات القطع المختارة للفحص ---
-    const cpuSelect = document.getElementById('cpu-select');
-    const moboSelect = document.getElementById('mobo-select');
-    const gpuSelect = document.getElementById('gpu-select');
-
-    const cpuData = cpuSelect.options[cpuSelect.selectedIndex].dataset;
-    const moboData = moboSelect.options[moboSelect.selectedIndex].dataset;
-    const gpuData = gpuSelect.options[gpuSelect.selectedIndex].dataset;
-
-    // --- ثالثاً: فحص توافق المعالج مع اللوحة ---
-    const compBox = document.getElementById('compatibility-check');
-    
-    // هل اختار المستخدم الاثنين؟
-    if (cpuData.name !== "none" && moboData.name !== "none") {
-        if (cpuData.socket === moboData.socket) {
-            compBox.innerText = `✅ متوافق: المعالج واللوحة كلاهما (${cpuData.socket})`;
-            compBox.style.background = "#d4edda"; // أخضر فاتح
-            compBox.style.color = "#155724";
-        } else {
-            compBox.innerText = `❌ غير متوافق! المعالج (${cpuData.socket}) لا يركب على (${moboData.socket})`;
-            compBox.style.background = "#f8d7da"; // أحمر فاتح
-            compBox.style.color = "#721c24";
-        }
-    } else {
-        compBox.innerText = "الرجاء اختيار المعالج واللوحة للفحص...";
-        compBox.style.background = "#eee";
-        compBox.style.color = "#333";
-    }
-
-    // --- رابعاً: فحص عنق الزجاجة ---
-    const bottleBox = document.getElementById('bottleneck-check');
-
-    if (cpuData.name !== "none" && gpuData.name !== "none") {
-        const cpuTier = parseInt(cpuData.tier) || 0;
-        const gpuTier = parseInt(gpuData.tier) || 0;
-        const diff = Math.abs(cpuTier - gpuTier);
-
-        if (diff <= 2) {
-            bottleBox.innerText = "✅ أداء متوازن وممتاز";
-            bottleBox.style.background = "#d4edda";
-            bottleBox.style.color = "#155724";
-        } else if (cpuTier < gpuTier) {
-            bottleBox.innerText = "⚠️ تحذير: المعالج قد يضعف أداء الكارت (Bottleneck)";
-            bottleBox.style.background = "#fff3cd"; // أصفر
-            bottleBox.style.color = "#856404";
-        } else {
-            bottleBox.innerText = "⚠️ الكارت ضعيف جداً مقارنة بالمعالج";
-            bottleBox.style.background = "#fff3cd";
-            bottleBox.style.color = "#856404";
-        }
-    } else {
-        bottleBox.innerText = "الرجاء اختيار المعالج وكارت الشاشة...";
-        bottleBox.style.background = "#eee";
-        bottleBox.style.color = "#333";
-    }
-}
-
-// --- ميزة الوضع الليلي ---
-const toggleBtn = document.getElementById('dark-mode-toggle');
-toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    const isDark = document.body.classList.contains('dark-mode');
-    toggleBtn.innerText = isDark ? '☀️' : '🌙';
-    localStorage.setItem('darkMode', isDark); // حفظ الإعداد
-});
-
-// عند تحميل الصفحة: استرجاع الوضع الليلي
-if (localStorage.getItem('darkMode') === 'true') {
-    document.body.classList.add('dark-mode');
-    toggleBtn.innerText = '☀️';
-}
-
-// --- ميزة حفظ التجميعة (Auto-Save) ---
-function saveConfiguration() {
-    const selections = {};
-    const ids = ['cpu-select', 'gpu-select', 'mobo-select', 'ram-select', 'storage-select', 'cooler-select', 'case-select', 'psu-select'];
-    ids.forEach(id => {
-        selections[id] = document.getElementById(id).value;
-    });
-    localStorage.setItem('savedPC', JSON.stringify(selections));
-}
-
-// تعديل بسيط على Listener القديم ليدعم الحفظ
 function setupListeners() {
     const ids = ['cpu-select', 'gpu-select', 'mobo-select', 'ram-select', 'storage-select', 'cooler-select', 'case-select', 'psu-select'];
     ids.forEach(id => {
-        document.getElementById(id).addEventListener('change', function() {
-            updatePreview(this);
-            calculateAndCheck();
-            saveConfiguration(); // حفظ كلما تغير شيء
+        document.getElementById(id).addEventListener('change', () => {
+            updateUI();
+            saveConfiguration();
         });
     });
+
+    // زر الوضع الليلي
+    const toggle = document.getElementById('dark-mode-toggle');
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        toggle.innerText = isDark ? '☀️' : '🌙';
+        localStorage.setItem('darkMode', isDark);
+    });
+    if(localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        toggle.innerText = '☀️';
+    }
+
+    // زر المشاركة
+    document.getElementById('share-btn').addEventListener('click', copyToClipboard);
 }
 
-// عند تحميل البيانات: استرجاع التجميعة المحفوظة
-// (أضف هذا الجزء داخل الـ .then الخاص بـ fetch بعد ملء القوائم)
-function loadSavedPC() {
+function updateUI() {
+    let total = 0;
+    const ids = ['cpu-select', 'gpu-select', 'mobo-select', 'ram-select', 'storage-select', 'cooler-select', 'case-select', 'psu-select'];
+    
+    ids.forEach(id => {
+        const select = document.getElementById(id);
+        total += parseInt(select.value) || 0;
+        if (id === event?.target?.id) { // تحديث الصورة فقط للقطعة التي تغيرت الآن
+            const opt = select.options[select.selectedIndex];
+            if(opt.dataset.name !== "none") {
+                document.getElementById('part-image').src = opt.dataset.image;
+                document.getElementById('part-name-display').innerText = opt.dataset.name;
+            }
+        }
+    });
+    document.getElementById('total-price').innerText = total;
+    checkCompatibility();
+}
+
+function checkCompatibility() {
+    const cpu = document.getElementById('cpu-select').options[document.getElementById('cpu-select').selectedIndex].dataset;
+    const mobo = document.getElementById('mobo-select').options[document.getElementById('mobo-select').selectedIndex].dataset;
+    const gpu = document.getElementById('gpu-select').options[document.getElementById('gpu-select').selectedIndex].dataset;
+
+    const compBox = document.getElementById('compatibility-check');
+    const bottleBox = document.getElementById('bottleneck-check');
+
+    // فحص اللوحة والمعالج
+    if (cpu.name !== "none" && mobo.name !== "none") {
+        if (cpu.socket === mobo.socket) {
+            compBox.innerText = `✅ متوافق (${cpu.socket})`;
+            compBox.style.background = "#d4edda";
+        } else {
+            compBox.innerText = `❌ خطأ: ${cpu.socket} لا يركب على ${mobo.socket}`;
+            compBox.style.background = "#f8d7da";
+        }
+    }
+
+    // فحص عنق الزجاجة
+    if (cpu.name !== "none" && gpu.name !== "none") {
+        const diff = Math.abs(parseInt(cpu.tier) - parseInt(gpu.tier));
+        bottleBox.innerText = diff <= 2 ? "✅ توازن ممتاز" : "⚠️ تحذير: عنق زجاجة ملحوظ";
+        bottleBox.style.background = diff <= 2 ? "#d4edda" : "#fff3cd";
+    }
+}
+
+function copyToClipboard() {
+    let text = "🖥️ تجميعة جهازي:\n";
+    const ids = ['cpu-select', 'gpu-select', 'mobo-select'];
+    ids.forEach(id => {
+        const s = document.getElementById(id);
+        if(s.value !== "0") text += `- ${s.options[s.selectedIndex].text}\n`;
+    });
+    text += `💰 المجموع: $${document.getElementById('total-price').innerText}`;
+    
+    navigator.clipboard.writeText(text).then(() => {
+        alert("تم نسخ التجميعة بنجاح!");
+    });
+}
+
+function saveConfiguration() {
+    const config = {};
+    const ids = ['cpu-select', 'gpu-select', 'mobo-select', 'ram-select', 'storage-select', 'cooler-select', 'case-select', 'psu-select'];
+    ids.forEach(id => config[id] = document.getElementById(id).value);
+    localStorage.setItem('savedPC', JSON.stringify(config));
+}
+
+function loadSavedConfiguration() {
     const saved = JSON.parse(localStorage.getItem('savedPC'));
     if (saved) {
         Object.keys(saved).forEach(id => {
             const el = document.getElementById(id);
-            if (el) {
-                el.value = saved[id];
-                // تحديث الصورة للقطع المحفوظة (اختياري للمعالج فقط كمثال)
-                if(id === 'cpu-select') updatePreview(el);
-            }
+            if(el) el.value = saved[id];
         });
-        calculateAndCheck();
+        updateUI();
     }
 }
-
-document.getElementById('share-btn').addEventListener('click', function() {
-    const ids = [
-        {id: 'cpu-select', label: 'المعالج'},
-        {id: 'gpu-select', label: 'كارت الشاشة'},
-        {id: 'mobo-select', label: 'اللوحة الأم'},
-        {id: 'ram-select', label: 'الرامات'},
-        {id: 'storage-select', label: 'التخزين'},
-        {id: 'psu-select', label: 'مزود الطاقة'}
-    ];
-
-    let shareText = "🖥️ تجميعة الكمبيوتر الخاصة بي من SF1-PC-BLR:\n\n";
-    
-    ids.forEach(item => {
-        const select = document.getElementById(item.id);
-        const text = select.options[select.selectedIndex].text;
-        if (select.value !== "0") {
-            shareText += `🔹 ${item.label}: ${text}\n`;
-        }
-    });
-
-    const total = document.getElementById('total-price').innerText;
-    shareText += `\n💰 المجموع الكلي: $${total}\n`;
-    shareText += `✅ حالة التوافق: ${document.getElementById('compatibility-check').innerText}\n`;
-    shareText += "\nتم إنشاؤها بواسطة SF1-PC-BLR Pro Builder";
-
-    // عملية النسخ للحافظة
-    navigator.clipboard.writeText(shareText).then(() => {
-        const originalText = this.innerText;
-        this.innerText = "✅ تم النسخ بنجاح!";
-        this.style.background = "#28a745";
-        
-        setTimeout(() => {
-            this.innerText = originalText;
-            this.style.background = "#007bff";
-        }, 2000);
-    }).catch(err => {
-        alert("عذراً، حدث خطأ أثناء النسخ.");
-    });
-});
 
