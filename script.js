@@ -198,3 +198,43 @@ function loadSavedPC() {
     }
 }
 
+document.getElementById('share-btn').addEventListener('click', function() {
+    const ids = [
+        {id: 'cpu-select', label: 'المعالج'},
+        {id: 'gpu-select', label: 'كارت الشاشة'},
+        {id: 'mobo-select', label: 'اللوحة الأم'},
+        {id: 'ram-select', label: 'الرامات'},
+        {id: 'storage-select', label: 'التخزين'},
+        {id: 'psu-select', label: 'مزود الطاقة'}
+    ];
+
+    let shareText = "🖥️ تجميعة الكمبيوتر الخاصة بي من SF1-PC-BLR:\n\n";
+    
+    ids.forEach(item => {
+        const select = document.getElementById(item.id);
+        const text = select.options[select.selectedIndex].text;
+        if (select.value !== "0") {
+            shareText += `🔹 ${item.label}: ${text}\n`;
+        }
+    });
+
+    const total = document.getElementById('total-price').innerText;
+    shareText += `\n💰 المجموع الكلي: $${total}\n`;
+    shareText += `✅ حالة التوافق: ${document.getElementById('compatibility-check').innerText}\n`;
+    shareText += "\nتم إنشاؤها بواسطة SF1-PC-BLR Pro Builder";
+
+    // عملية النسخ للحافظة
+    navigator.clipboard.writeText(shareText).then(() => {
+        const originalText = this.innerText;
+        this.innerText = "✅ تم النسخ بنجاح!";
+        this.style.background = "#28a745";
+        
+        setTimeout(() => {
+            this.innerText = originalText;
+            this.style.background = "#007bff";
+        }, 2000);
+    }).catch(err => {
+        alert("عذراً، حدث خطأ أثناء النسخ.");
+    });
+});
+
