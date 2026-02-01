@@ -1,56 +1,41 @@
 {
     "cpus": [
-        {"name": "Intel Core i9-14900KS (Extreme)", "price": 680, "image": "https://placehold.co/400x400/007bff/ffffff?text=i9-14900KS"},
-        {"name": "Intel Core i9-13900K", "price": 550, "image": "https://placehold.co/400x400/007bff/ffffff?text=i9-13900K"},
-        {"name": "Intel Core i7-14700K", "price": 400, "image": "https://placehold.co/400x400/007bff/ffffff?text=i7-14700K"},
-        {"name": "Intel Core i5-13400F (Best Value)", "price": 200, "image": "https://placehold.co/400x400/007bff/ffffff?text=i5-13400F"},
-        {"name": "Intel Core i3-12100F (Budget King)", "price": 95, "image": "https://placehold.co/400x400/007bff/ffffff?text=i3-12100F"},
-        {"name": "Intel Core 2 Quad Q6600 (Legend)", "price": 25, "image": "https://placehold.co/400x400/555/fff?text=Core2Quad"},
-        {"name": "AMD Ryzen 9 7950X3D", "price": 650, "image": "https://placehold.co/400x400/ff5722/ffffff?text=Ryzen+9+7950X3D"},
-        {"name": "AMD Ryzen 7 7800X3D (Gaming King)", "price": 450, "image": "https://placehold.co/400x400/ff5722/ffffff?text=Ryzen+7+7800X3D"},
-        {"name": "AMD Ryzen 5 5600X", "price": 150, "image": "https://placehold.co/400x400/ff5722/ffffff?text=Ryzen+5+5600X"},
-        {"name": "AMD FX-8350 (Classic)", "price": 40, "image": "https://placehold.co/400x400/333/fff?text=FX-8350"}
+        {"name": "Intel Core i9-14900K", "price": 580, "socket": "LGA1700", "tier": 10, "image": "https://m.media-amazon.com/images/I/61S6X87B6hL._AC_SL1500_.jpg"},
+        {"name": "AMD Ryzen 7 7800X3D", "price": 450, "socket": "AM5", "tier": 10, "image": "https://m.media-amazon.com/images/I/51p6t2S9DlL._AC_SL1000_.jpg"},
+        {"name": "Intel Core i5-12400F", "price": 140, "socket": "LGA1700", "tier": 6, "image": "https://m.media-amazon.com/images/I/61p-k8J-D2L._AC_SL1182_.jpg"},
+        {"name": "AMD Ryzen 5 5600X", "price": 155, "socket": "AM4", "tier": 6, "image": "https://m.media-amazon.com/images/I/61vG62qxG5L._AC_SL1000_.jpg"},
+        {"name": "Intel Core i7-4790K (Old)", "price": 80, "socket": "LGA1150", "tier": 3, "image": "https://m.media-amazon.com/images/I/51p8256G6pL._AC_.jpg"}
     ],
     "gpus": [
-        {"name": "NVIDIA RTX 4090 24GB", "price": 1800, "image": "https://placehold.co/400x400/76b900/ffffff?text=RTX+4090"},
-        {"name": "NVIDIA RTX 4080 Super", "price": 1000, "image": "https://placehold.co/400x400/76b900/ffffff?text=RTX+4080+Super"},
-        {"name": "NVIDIA RTX 4070 Ti Super", "price": 800, "image": "https://placehold.co/400x400/76b900/ffffff?text=RTX+4070+Ti"},
-        {"name": "NVIDIA RTX 4060 8GB", "price": 290, "image": "https://placehold.co/400x400/76b900/ffffff?text=RTX+4060"},
-        {"name": "NVIDIA GTX 1080 Ti (The GOAT)", "price": 250, "image": "https://placehold.co/400x400/555/fff?text=GTX+1080Ti"},
-        {"name": "NVIDIA GTX 750 Ti", "price": 50, "image": "https://placehold.co/400x400/555/fff?text=GTX+750Ti"},
-        {"name": "AMD RX 7900 XTX", "price": 950, "image": "https://placehold.co/400x400/d32f2f/ffffff?text=RX+7900+XTX"},
-        {"name": "AMD RX 6700 XT", "price": 320, "image": "https://placehold.co/400x400/d32f2f/ffffff?text=RX+6700+XT"},
-        {"name": "AMD RX 580 8GB", "price": 80, "image": "https://placehold.co/400x400/333/fff?text=RX+580"}
+        {"name": "NVIDIA RTX 4090", "price": 1700, "tier": 10, "image": "https://m.media-amazon.com/images/I/7187U70T4XL._AC_SL1500_.jpg"},
+        {"name": "NVIDIA RTX 4070 Super", "price": 600, "tier": 8, "image": "https://m.media-amazon.com/images/I/71S8-tEon6L._AC_SL1500_.jpg"},
+        {"name": "NVIDIA RTX 3060", "price": 285, "tier": 5, "image": "https://m.media-amazon.com/images/I/81v7Tf9N-rL._AC_SL1500_.jpg"},
+        {"name": "AMD RX 7800 XT", "price": 500, "tier": 8, "image": "https://m.media-amazon.com/images/I/71YvE89hGML._AC_SL1500_.jpg"},
+        {"name": "NVIDIA GTX 1050 Ti (Vintage)", "price": 100, "tier": 2, "image": "https://m.media-amazon.com/images/I/81fH0-U8ZBL._AC_SL1500_.jpg"}
     ],
     "motherboards": [
-        {"name": "ASUS ROG MAXIMUS Z790", "price": 600, "image": "https://placehold.co/400x400/333/fff?text=Z790+ROG"},
-        {"name": "MSI B760M Bomber", "price": 120, "image": "https://placehold.co/400x400/333/fff?text=B760M"},
-        {"name": "Gigabyte X670E AORUS", "price": 400, "image": "https://placehold.co/400x400/333/fff?text=X670E+Aorus"},
-        {"name": "ASRock B450M Steel Legend", "price": 90, "image": "https://placehold.co/400x400/333/fff?text=B450M"}
+        {"name": "ASUS ROG Z790 (Intel)", "price": 450, "socket": "LGA1700", "image": "https://m.media-amazon.com/images/I/81Z58fS3m1L._AC_SL1500_.jpg"},
+        {"name": "MSI B650 Tomahawk (AMD)", "price": 210, "socket": "AM5", "image": "https://m.media-amazon.com/images/I/81vN5C+6tAL._AC_SL1500_.jpg"},
+        {"name": "Gigabyte B450M (AMD Old)", "price": 80, "socket": "AM4", "image": "https://m.media-amazon.com/images/I/81L7-oO3n4L._AC_SL1500_.jpg"},
+        {"name": "H81 Motherboard (Intel Old)", "price": 50, "socket": "LGA1150", "image": "https://m.media-amazon.com/images/I/71Y7p9+E1dL._AC_SL1200_.jpg"}
     ],
     "ram": [
-        {"name": "64GB DDR5 6400MHz RGB", "price": 220, "image": "https://placehold.co/400x400/222/fff?text=64GB+DDR5"},
-        {"name": "32GB DDR5 6000MHz", "price": 110, "image": "https://placehold.co/400x400/222/fff?text=32GB+DDR5"},
-        {"name": "16GB DDR4 3200MHz", "price": 45, "image": "https://placehold.co/400x400/222/fff?text=16GB+DDR4"},
-        {"name": "8GB DDR3 1600MHz", "price": 20, "image": "https://placehold.co/400x400/555/fff?text=8GB+DDR3"}
+        {"name": "32GB DDR5 6000MHz", "price": 120, "image": "https://m.media-amazon.com/images/I/610V3pT9uML._AC_SL1500_.jpg"},
+        {"name": "16GB DDR4 3200MHz", "price": 45, "image": "https://m.media-amazon.com/images/I/61L9p6-uTML._AC_SL1500_.jpg"}
     ],
     "storage": [
-        {"name": "Samsung 990 Pro 2TB NVMe", "price": 170, "image": "https://placehold.co/400x400/000/fff?text=Samsung+990+Pro"},
-        {"name": "Kingston NV2 1TB NVMe", "price": 60, "image": "https://placehold.co/400x400/000/fff?text=Kingston+1TB"},
-        {"name": "Seagate HDD 2TB", "price": 55, "image": "https://placehold.co/400x400/000/fff?text=HDD+2TB"}
-    ],
-    "psu": [
-        {"name": "Corsair RM1000x Gold", "price": 180, "image": "https://placehold.co/400x400/f1c40f/000?text=1000W+Gold"},
-        {"name": "EVGA 600W Bronze", "price": 50, "image": "https://placehold.co/400x400/cd7f32/fff?text=600W+Bronze"}
-    ],
-    "cases": [
-        {"name": "Lian Li O11 Dynamic", "price": 150, "image": "https://placehold.co/400x400/111/fff?text=Lian+Li+O11"},
-        {"name": "NZXT H5 Flow", "price": 90, "image": "https://placehold.co/400x400/111/fff?text=NZXT+H5"},
-        {"name": "Generic Office Case", "price": 30, "image": "https://placehold.co/400x400/ccc/000?text=Office+Case"}
+        {"name": "1TB NVMe Gen4 SSD", "price": 85, "image": "https://m.media-amazon.com/images/I/71XmUunD6vL._AC_SL1500_.jpg"},
+        {"name": "2TB HDD", "price": 55, "image": "https://m.media-amazon.com/images/I/71jr9S9m7kL._AC_SL1500_.jpg"}
     ],
     "coolers": [
-        {"name": "NZXT Kraken 360mm AIO", "price": 180, "image": "https://placehold.co/400x400/00d/fff?text=Liquid+Cooler"},
-        {"name": "DeepCool AG400 Air", "price": 25, "image": "https://placehold.co/400x400/888/fff?text=Air+Cooler"}
+        {"name": "360mm Liquid Cooler", "price": 150, "image": "https://m.media-amazon.com/images/I/71y6A1fC08L._AC_SL1500_.jpg"},
+        {"name": "Air Cooler", "price": 35, "image": "https://m.media-amazon.com/images/I/61D6p6T7RKL._AC_SL1500_.jpg"}
+    ],
+    "cases": [
+        {"name": "Gaming Case RGB", "price": 100, "image": "https://m.media-amazon.com/images/I/81mD+W-e74L._AC_SL1500_.jpg"}
+    ],
+    "psu": [
+        {"name": "850W Gold PSU", "price": 130, "image": "https://m.media-amazon.com/images/I/81O0vE3P64L._AC_SL1500_.jpg"}
     ]
 }
 
