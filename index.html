@@ -15,48 +15,64 @@
 
     <meta property="og:site_name" content="SF1-PC-BLR">
     <meta property="og:title" content="SF1-PC-BLR Pro Builder">
-    <meta property="og:description" content="ابنِ تجميعة أحلامك وافحص التوافق وعنق الزجاجة مجاناً.">
+    <meta property="og:description" content="ابنِ تجميعة أحلامك وافحص التوافق وعنق الزجاجة مجاناً مع أداة SUPRA1993 الذكية.">
     <meta property="og:image" itemprop="image" content="https://opengraph.githubassets.com/1/supra1993/SF1-PC-BLR">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://supra1993.github.io/SF1-PC-BLR/">
-    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://opengraph.githubassets.com/1/supra1993/SF1-PC-BLR">
 
-    <style>        
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5;
-      margin: 0; padding: 20px; color: #333; transition: 0.3s; }
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; color: #333; transition: 0.3s; }
+        body.dark-mode { background: #121212; color: #e0e0e0; }
+        
+        header { text-align: center; margin-bottom: 30px; }
+        h1 { color: #1a73e8; margin: 0; font-size: 2.2rem; }
+        p { color: #666; }
+        body.dark-mode p { color: #aaa; }
+
+        .builder-container { display: flex; flex-wrap: wrap; gap: 20px; max-width: 1200px; margin: 0 auto; }
+        
+        .controls, .preview { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .controls { flex: 2; min-width: 300px; }
+        .preview { flex: 1; min-width: 300px; text-align: center; position: sticky; top: 20px; height: fit-content; }
+        
         body.dark-mode .controls, body.dark-mode .preview { background: #1e1e1e; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
 
         .control-group { margin-bottom: 15px; text-align: right; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; background: #fafafa; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9rem; }
+        select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; background: #fafafa; font-size: 1rem; cursor: pointer; }
         body.dark-mode select { background: #2d2d2d; color: white; border-color: #444; }
 
         .total-box { background: #e8f0fe; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #1a73e8; }
-        .total-price { font-size: 2rem; color: #1a73e8; font-weight: bold; }
-        body.dark-mode .total-box { background: #0d47a1; color: white; }
+        .total-price { font-size: 2.2rem; color: #1a73e8; font-weight: bold; }
+        body.dark-mode .total-box { background: #0d47a1; border-color: #1976d2; color: white; }
+        body.dark-mode .total-price { color: #fff; }
 
-        .status-box { padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 0.9rem; border: 1px solid #ddd; background: #f9f9f9; }
+        .status-box { padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 0.95rem; font-weight: 500; border: 1px solid #ddd; background: #f9f9f9; transition: 0.3s; }
         body.dark-mode .status-box { background: #2d2d2d; border-color: #444; }
 
-        #part-image { width: 100%; max-width: 250px; height: 250px; object-fit: contain; margin: 15px 0; }
-        
+        #part-image { width: 100%; max-width: 250px; height: 250px; object-fit: contain; margin: 15px 0; border-radius: 10px; background: #fff; padding: 5px; border: 1px solid #eee; }
+        #part-name-display { font-weight: bold; color: #555; margin-bottom: 15px; min-height: 1.2em; }
+        body.dark-mode #part-name-display { color: #ccc; }
+
         .btn-group { display: flex; flex-direction: column; gap: 10px; }
-        .btn { padding: 15px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem; color: white; transition: 0.2s; }
-        .btn-buy { background: #28a745; }
+        .btn { padding: 15px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem; color: white; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .btn-print { background: #28a745; }
         .btn-share { background: #007bff; }
-        
-        #dark-mode-toggle { position: fixed; top: 10px; left: 10px; padding: 10px; border-radius: 50%; border: none; cursor: pointer; background: #333; color: white; font-size: 1.2rem; }
+        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+        #dark-mode-toggle { position: fixed; top: 15px; left: 15px; width: 45px; height: 45px; border-radius: 50%; border: none; cursor: pointer; background: #333; color: white; font-size: 1.2rem; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        body.dark-mode #dark-mode-toggle { background: #f1c40f; color: #333; }
     </style>
 </head>
 <body>
 
-    <button id="dark-mode-toggle">🌙</button>
+    <button id="dark-mode-toggle" title="تبديل الوضع">🌙</button>
 
     <header>
         <h1>SF1-PC-BLR Pro</h1>
-        <p>النسخة المتكاملة الذكية</p>
+        <p>مصمم التجميعات الذكي بواسطة SUPRA1993</p>
     </header>
 
     <div class="builder-container">
@@ -73,18 +89,18 @@
 
         <div class="preview">
             <div class="total-box">
-                <span>المجموع الكلي</span>
+                <span style="font-size: 0.9rem;">المجموع التقديري</span>
                 <div class="total-price">$<span id="total-price">0</span></div>
             </div>
 
-            <div id="compatibility-check" class="status-box">انتظار اختيار القطع...</div>
+            <div id="compatibility-check" class="status-box">الرجاء اختيار القطع للفحص...</div>
             <div id="bottleneck-check" class="status-box">عنق الزجاجة: --</div>
 
-            <img id="part-image" src="https://placehold.co/400x400/eee/999?text=Preview" alt="Part Image">
-            <div id="part-name-display" style="margin-bottom:15px; font-weight:bold;"></div>
+            <img id="part-image" src="https://placehold.co/400x400/eee/999?text=Preview" alt="صورة القطعة">
+            <div id="part-name-display">اختر قطعة لمعاينتها</div>
 
             <div class="btn-group">
-                <button class="btn btn-buy" onclick="window.print()">🖨️ طباعة التجميعة</button>
+                <button class="btn btn-print" onclick="window.print()">🖨️ طباعة التجميعة</button>
                 <button id="share-btn" class="btn btn-share">📋 نسخ التجميعة للمشاركة</button>
             </div>
         </div>
