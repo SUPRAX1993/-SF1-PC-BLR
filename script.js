@@ -144,3 +144,57 @@ function calculateAndCheck() {
     }
 }
 
+// --- ميزة الوضع الليلي ---
+const toggleBtn = document.getElementById('dark-mode-toggle');
+toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    toggleBtn.innerText = isDark ? '☀️' : '🌙';
+    localStorage.setItem('darkMode', isDark); // حفظ الإعداد
+});
+
+// عند تحميل الصفحة: استرجاع الوضع الليلي
+if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+    toggleBtn.innerText = '☀️';
+}
+
+// --- ميزة حفظ التجميعة (Auto-Save) ---
+function saveConfiguration() {
+    const selections = {};
+    const ids = ['cpu-select', 'gpu-select', 'mobo-select', 'ram-select', 'storage-select', 'cooler-select', 'case-select', 'psu-select'];
+    ids.forEach(id => {
+        selections[id] = document.getElementById(id).value;
+    });
+    localStorage.setItem('savedPC', JSON.stringify(selections));
+}
+
+// تعديل بسيط على Listener القديم ليدعم الحفظ
+function setupListeners() {
+    const ids = ['cpu-select', 'gpu-select', 'mobo-select', 'ram-select', 'storage-select', 'cooler-select', 'case-select', 'psu-select'];
+    ids.forEach(id => {
+        document.getElementById(id).addEventListener('change', function() {
+            updatePreview(this);
+            calculateAndCheck();
+            saveConfiguration(); // حفظ كلما تغير شيء
+        });
+    });
+}
+
+// عند تحميل البيانات: استرجاع التجميعة المحفوظة
+// (أضف هذا الجزء داخل الـ .then الخاص بـ fetch بعد ملء القوائم)
+function loadSavedPC() {
+    const saved = JSON.parse(localStorage.getItem('savedPC'));
+    if (saved) {
+        Object.keys(saved).forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.value = saved[id];
+                // تحديث الصورة للقطع المحفوظة (اختياري للمعالج فقط كمثال)
+                if(id === 'cpu-select') updatePreview(el);
+            }
+        });
+        calculateAndCheck();
+    }
+}
+
