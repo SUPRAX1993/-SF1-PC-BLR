@@ -1,12 +1,13 @@
-let fullData = {}; // مخزن للبيانات التقنية
+let fullData = {};
 
-// 1. تحميل البيانات من الملف
+// 1. جلب البيانات عند فتح الموقع
 fetch('parts.json')
     .then(res => res.json())
     .then(data => {
         fullData = data;
-        
-        // ملء جميع القوائم
+        console.log("✅ تم تحميل البيانات:", data);
+
+        // تعبئة القوائم
         populateSelect('cpu-select', data.cpus);
         populateSelect('gpu-select', data.gpus);
         populateSelect('mobo-select', data.motherboards);
@@ -16,86 +17,130 @@ fetch('parts.json')
         populateSelect('case-select', data.cases);
         populateSelect('psu-select', data.psu);
 
+        // تشغيل المراقبين
         setupListeners();
-    });
+    })
+    .catch(err => console.error("❌ خطأ في تحميل الملف:", err));
 
-function populateSelect(id, items) {
-    const select = document.getElementById(id);
-    if(!select) return;
+// 2. دالة تعبئة القوائم (تضيف المعلومات داخل الزر المخفي)
+function populateSelect(elementId, items) {
+    const select = document.getElementById(elementId);
+    if (!select) return;
+
+    // الخيار الافتراضي
     select.innerHTML = '<option value="0" data-name="none">-- اختر قطعة --</option>';
-    
+
     items.forEach(item => {
-        const opt = document.createElement('option');
-        opt.value = item.price;
-        opt.text = `${item.name} (${item.price}$)`;
-        opt.dataset.name = item.name;
-        opt.dataset.image = item.image;
-        select.appendChild(opt);
+        const option = document.createElement('option');
+        option.value = item.price; // قيمة الخيار هي السعر
+        option.text = `${item.name} (${item.price}$)`;
+        
+        // تخزين البيانات التقنية داخل العنصر نفسه لسهولة الوصول
+        option.dataset.name = item.name;
+        option.dataset.image = item.image || "https://placehold.co/400x400/eee/999?text=No+Image";
+        option.dataset.socket = item.socket || ""; // تخزين السوكيت
+        option.dataset.tier = item.tier || "";     // تخزين القوة
+        
+        select.appendChild(option);
     });
 }
 
-// 2. إعداد مراقب التغييرات
+// 3. مراقبة التغييرات
 function setupListeners() {
     const ids = ['cpu-select', 'gpu-select', 'mobo-select', 'ram-select', 'storage-select', 'cooler-select', 'case-select', 'psu-select'];
+    
     ids.forEach(id => {
-        document.getElementById(id).addEventListener('change', function() {
-            updatePreview(this);
-            calculateAndCheck(); // هذه الدالة تحسب السعر وتفحص التوافق معاً
-        });
+        const element = document.getElementById(id);
+        if (element) {
+            element.addEventListener('change', function() {
+                updatePreview(this);    // تحديث الصورة
+                calculateAndCheck();    // تحديث السعر والفحص
+            });
+        }
     });
 }
 
-function updatePreview(select) {
-    const opt = select.options[select.selectedIndex];
-    if (opt.dataset.image) {
-        document.getElementById('part-image').src = opt.dataset.image;
-        document.getElementById('part-name-display').innerText = opt.dataset.name;
+// 4. تحديث صورة المعاينة
+function updatePreview(selectElement) {
+    const selectedOption = selectElement.options[selectElement.selectedIndex];
+    const imgUrl = selectedOption.dataset.image;
+    const name = selectedOption.dataset.name;
+
+    const imgBox = document.getElementById('part-image');
+    const nameBox = document.getElementById('part-name-display');
+
+    if (imgBox && nameBox && name !== "none") {
+        imgBox.src = imgUrl;
+        nameBox.innerText = name;
     }
 }
 
-// 3. المحرك: حساب السعر + فحص التوافق + عنق الزجاجة
+// 5. المحرك الرئيسي: حساب السعر + فحص التوافق
 function calculateAndCheck() {
+    // --- أولاً: حساب السعر الإجمالي ---
     const ids = ['cpu-select', 'gpu-select', 'mobo-select', 'ram-select', 'storage-select', 'cooler-select', 'case-select', 'psu-select'];
     let total = 0;
+    
     ids.forEach(id => {
-        total += parseInt(document.getElementById(id).value) || 0;
+        const val = parseInt(document.getElementById(id).value) || 0;
+        total += val;
     });
     document.getElementById('total-price').innerText = total;
 
-    // جلب بيانات القطع المختارة للفحص
-    const cpu = getSelectedInfo('cpu-select', 'cpus');
-    const gpu = getSelectedInfo('gpu-select', 'gpus');
-    const mobo = getSelectedInfo('mobo-select', 'motherboards');
+    // --- ثانياً: جلب بيانات القطع المختارة للفحص ---
+    const cpuSelect = document.getElementById('cpu-select');
+    const moboSelect = document.getElementById('mobo-select');
+    const gpuSelect = document.getElementById('gpu-select');
 
-    // فحص التوافق (Compatibility)
-    let compBox = document.getElementById('compatibility-check');
-    if (cpu && mobo) {
-        if (cpu.socket === mobo.socket) {
-            compBox.innerText = `✅ توافق سليم: المعالج واللوحة يدعمان ${cpu.socket}`;
-            compBox.style.background = "#d4edda";
+    const cpuData = cpuSelect.options[cpuSelect.selectedIndex].dataset;
+    const moboData = moboSelect.options[moboSelect.selectedIndex].dataset;
+    const gpuData = gpuSelect.options[gpuSelect.selectedIndex].dataset;
+
+    // --- ثالثاً: فحص توافق المعالج مع اللوحة ---
+    const compBox = document.getElementById('compatibility-check');
+    
+    // هل اختار المستخدم الاثنين؟
+    if (cpuData.name !== "none" && moboData.name !== "none") {
+        if (cpuData.socket === moboData.socket) {
+            compBox.innerText = `✅ متوافق: المعالج واللوحة كلاهما (${cpuData.socket})`;
+            compBox.style.background = "#d4edda"; // أخضر فاتح
+            compBox.style.color = "#155724";
         } else {
-            compBox.innerText = `❌ خطأ في التوافق: المعالج ${cpu.socket} واللوحة ${mobo.socket}`;
-            compBox.style.background = "#f8d7da";
+            compBox.innerText = `❌ غير متوافق! المعالج (${cpuData.socket}) لا يركب على (${moboData.socket})`;
+            compBox.style.background = "#f8d7da"; // أحمر فاتح
+            compBox.style.color = "#721c24";
         }
+    } else {
+        compBox.innerText = "الرجاء اختيار المعالج واللوحة للفحص...";
+        compBox.style.background = "#eee";
+        compBox.style.color = "#333";
     }
 
-    // فحص عنق الزجاجة (Bottleneck)
-    let bottleBox = document.getElementById('bottleneck-check');
-    if (cpu && gpu) {
-        const diff = Math.abs(cpu.tier - gpu.tier);
+    // --- رابعاً: فحص عنق الزجاجة ---
+    const bottleBox = document.getElementById('bottleneck-check');
+
+    if (cpuData.name !== "none" && gpuData.name !== "none") {
+        const cpuTier = parseInt(cpuData.tier) || 0;
+        const gpuTier = parseInt(gpuData.tier) || 0;
+        const diff = Math.abs(cpuTier - gpuTier);
+
         if (diff <= 2) {
-            bottleBox.innerText = "✅ توازن ممتاز بين القوة والأداء";
+            bottleBox.innerText = "✅ أداء متوازن وممتاز";
             bottleBox.style.background = "#d4edda";
+            bottleBox.style.color = "#155724";
+        } else if (cpuTier < gpuTier) {
+            bottleBox.innerText = "⚠️ تحذير: المعالج قد يضعف أداء الكارت (Bottleneck)";
+            bottleBox.style.background = "#fff3cd"; // أصفر
+            bottleBox.style.color = "#856404";
         } else {
-            bottleBox.innerText = "⚠️ تحذير: يوجد فرق كبير في الأداء (عنق زجاجة)";
+            bottleBox.innerText = "⚠️ الكارت ضعيف جداً مقارنة بالمعالج";
             bottleBox.style.background = "#fff3cd";
+            bottleBox.style.color = "#856404";
         }
+    } else {
+        bottleBox.innerText = "الرجاء اختيار المعالج وكارت الشاشة...";
+        bottleBox.style.background = "#eee";
+        bottleBox.style.color = "#333";
     }
-}
-
-// دالة مساعدة لجلب معلومات القطعة كاملة من المخزن
-function getSelectedInfo(id, category) {
-    const name = document.getElementById(id).options[document.getElementById(id).selectedIndex].dataset.name;
-    return fullData[category]?.find(i => i.name === name);
 }
 
