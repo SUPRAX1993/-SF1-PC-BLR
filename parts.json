@@ -364,5 +364,6 @@
     {"name": "DeepCool DA750 (750W Bronze)", "price": 70, "wattage": 750, "tier": 0},
     {"name": "AeroCool LUX 650W RGB", "price": 55, "wattage": 650, "tier": 0}
   ]
+
 }
 
