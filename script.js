@@ -65,17 +65,27 @@ function renderList(search = '') {
     items.filter(i => i.name.toLowerCase().includes(search.toLowerCase())).forEach(item => {
         const div = document.createElement('div');
         div.className = 'part-item';
+        
+        // تجهيز النص الذي سيظهر في النافذة المخصصة
+        const info = `
+            <b>الاسم:</b> ${item.name}<br>
+            <b>السوكيت:</b> ${item.socket || "غير متوفر"}<br>
+            <b>الطاقة:</b> ${item.wattage}W<br>
+            <b>الأداء:</b> ${item.tier}/10
+        `;
+
         div.innerHTML = `
             <div style="flex:1">
                 <strong>${item.name}</strong> <br>
                 <small style="color:var(--accent-color)">$${item.price} | ${item.wattage}W</small>
             </div>
-            <button class="info-btn" onclick="event.stopPropagation(); alert('تفاصيل: ${item.name}\\nالسوكيت: ${item.socket || "N/A"}\\nالأداء: ${item.tier}/10')">i</button>
+            <button class="info-btn" onclick="event.stopPropagation(); showDetails('${item.name}', \`${info}\`)">i</button>
             <button class="btn btn-main" style="width:auto; padding:5px 15px; margin:0 10px" onclick="selectItem('${item.name}')">اختيار</button>
         `;
         list.appendChild(div);
     });
 }
+
 
 function selectItem(name) {
     const item = fullData[currentCat].find(i => i.name === name);
@@ -133,5 +143,15 @@ function toggleTheme() {
     const target = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', target);
     document.getElementById('theme-toggle').innerText = target === 'dark' ? '🌙' : '☀️';
+}
+
+function showDetails(title, content) {
+    document.getElementById('details-title').innerText = title;
+    document.getElementById('details-body').innerHTML = content;
+    document.getElementById('details-modal').style.display = 'block';
+}
+
+function closeDetails() {
+    document.getElementById('details-modal').style.display = 'none';
 }
 

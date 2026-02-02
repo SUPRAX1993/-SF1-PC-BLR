@@ -41,10 +41,8 @@
         .logo span { color: var(--accent-color); }
 
         .container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; max-width: 1400px; margin: 30px auto; padding: 0 20px; }
-
         .panel { background: var(--bg-panel); border-radius: 20px; padding: 25px; border: 1px solid var(--border-color); box-shadow: var(--panel-shadow); }
 
-        /* البطاقات الجديدة */
         .selection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .part-card {
             background: var(--bg-main); padding: 20px; border-radius: 15px; border: 2px solid var(--border-color);
@@ -54,12 +52,10 @@
         .part-card h4 { font-size: 0.8rem; opacity: 0.7; }
         .part-card p { font-weight: 700; font-size: 0.9rem; color: var(--accent-color); margin-top: 5px; }
 
-        /* لوحة المعاينة */
         .preview-box { text-align: center; position: sticky; top: 100px; }
         #preview-img { max-width: 250px; height: 250px; object-fit: contain; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); }
         
         .price-tag { font-family: 'Rajdhani'; font-size: 3rem; font-weight: 900; color: var(--accent-color); margin-bottom: 20px; }
-
         .status-box { background: var(--bg-main); padding: 15px; border-radius: 12px; margin-bottom: 10px; font-size: 0.9rem; border: 1px solid var(--border-color); }
 
         /* Modal النافذة */
@@ -90,17 +86,14 @@
     <div class="container">
         <section class="panel">
             <h2 style="margin-bottom:20px;">تخصيص التجميعة</h2>
-            <div class="selection-grid" id="cards-container">
-                </div>
+            <div class="selection-grid" id="cards-container"></div>
         </section>
 
         <section class="panel preview-box">
             <img id="preview-img" src="https://placehold.co/400x400/141414/00f2c3?text=SF1-PC" alt="PC">
             <div class="price-tag">$<span id="total-price">0</span></div>
-            
             <div id="comp-status" class="status-box">الحالة: بانتظار القطع</div>
             <div id="bottleneck-status" class="status-box">عنق الزجاجة: --</div>
-
             <button class="btn btn-main" id="share-btn">📋 نسخ تقرير التجميعة</button>
             <button class="btn btn-outline" onclick="location.reload()">🔄 إعادة تعيين</button>
         </section>
@@ -112,6 +105,14 @@
             <input type="text" id="part-search" class="search-bar" placeholder="ابحث باسم القطعة...">
             <div id="parts-list"></div>
             <button class="btn btn-outline" onclick="closeModal()">إغلاق</button>
+        </div>
+    </div>
+
+    <div id="details-modal" class="modal" style="z-index: 10000;">
+        <div class="modal-content" style="max-width: 400px; text-align: center;">
+            <h3 id="details-title" style="color: var(--accent-color); margin-bottom: 15px;">تفاصيل القطعة</h3>
+            <div id="details-body" style="text-align: right; line-height: 1.8; margin-bottom: 20px;"></div>
+            <button class="btn btn-main" onclick="closeDetails()">فهمت</button>
         </div>
     </div>
 
