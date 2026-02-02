@@ -1,184 +1,137 @@
-// --- تعريفات عامة ---
 let fullData = {};
-const componentIds = ['cpu-select', 'gpu-select', 'mobo-select', 'ram-select', 'storage-select', 'cooler-select', 'case-select', 'psu-select'];
-const storageKey = 'SF1_Ultimate_Build_V2'; 
+let selectedBuild = {
+    cpus: null, gpus: null, motherboards: null, ram: null,
+    storage: null, coolers: null, cases: null, psu: null
+};
+let currentCat = '';
 
+const labels = {
+    cpus: "المعالج", gpus: "كارت الشاشة", motherboards: "اللوحة الأم",
+    ram: "الرامات", storage: "وحدة التخزين", coolers: "المبرد",
+    cases: "الصندوق", psu: "مزود الطاقة"
+};
+
+// تشغيل عند التحميل
 document.addEventListener('DOMContentLoaded', () => {
-    initTheme();
     fetch('parts.json')
         .then(res => res.json())
         .then(data => {
             fullData = data;
-            populateAllSelects();
-            setupEventListeners();
-            loadSavedBuild();
-        })
-        .catch(err => console.error("Error loading JSON:", err));
+            initBuilder();
+        });
+
+    document.getElementById('theme-toggle').onclick = toggleTheme;
+    document.getElementById('part-search').oninput = (e) => renderList(e.target.value);
+    document.getElementById('share-btn').onclick = shareBuild;
 });
 
-function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    document.getElementById('theme-toggle').innerText = savedTheme === 'dark' ? '☀️' : '🌙';
-}
-
-function populateAllSelects() {
-    const mapping = {
-        'cpu-select': fullData.cpus,
-        'gpu-select': fullData.gpus,
-        'mobo-select': fullData.motherboards,
-        'ram-select': fullData.ram,
-        'storage-select': fullData.storage,
-        'cooler-select': fullData.coolers,
-        'case-select': fullData.cases,
-        'psu-select': fullData.psu
-    };
-
-    Object.keys(mapping).forEach(id => {
-        const select = document.getElementById(id);
-        if (select && mapping[id]) {
-            select.innerHTML = '<option value="0" data-name="none" data-price="0" data-wattage="0" data-tier="0">-- اختر المكون --</option>';
-            mapping[id].forEach(item => {
-                const opt = document.createElement('option');
-                opt.value = item.price; // السعر هو القيمة الأساسية
-                opt.text = `${item.name} ($${item.price})`;
-                opt.dataset.name = item.name;
-                opt.dataset.price = item.price;
-                opt.dataset.wattage = item.wattage || 0;
-                opt.dataset.tier = item.tier || 0;
-                opt.dataset.socket = item.socket || "";
-                opt.dataset.image = item.image || "";
-                select.appendChild(opt);
-            });
-        }
-    });
-}
-
-function setupEventListeners() {
-    componentIds.forEach(id => {
-        document.getElementById(id).addEventListener('change', (e) => {
-            updatePreviewImage(e.target);
-            calculateAllMetrics(); // الحساب فور التغيير
-            saveBuild();
-        });
-    });
-    document.getElementById('theme-toggle').addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-        document.getElementById('theme-toggle').innerText = next === 'dark' ? '☀️' : '🌙';
-    });
-    document.getElementById('share-btn').addEventListener('click', generateProfessionalReport);
-    document.getElementById('reset-btn').addEventListener('click', resetBuilder);
-}
-
-function updatePreviewImage(selectElement) {
-    const opt = selectElement.options[selectElement.selectedIndex];
-    if (opt.dataset.name !== "none" && opt.dataset.image) {
-        document.getElementById('preview-img').src = opt.dataset.image;
-        document.getElementById('preview-label').innerText = `معاينة: ${opt.dataset.name}`;
-    }
-}
-
-function calculateAllMetrics() {
-    let totalPrice = 0;
-    let totalWattage = 0;
-    let cpuTier = 0;
-    let gpuTier = 0;
-    const summaryList = document.getElementById('build-summary');
-    summaryList.innerHTML = '';
-
-    componentIds.forEach(id => {
-        const select = document.getElementById(id);
-        const opt = select.options[select.selectedIndex];
-        
-        const price = parseInt(opt.dataset.price) || 0;
-        const watt = parseInt(opt.dataset.wattage) || 0;
-        const tier = parseInt(opt.dataset.tier) || 0;
-
-        if (opt.dataset.name !== "none") {
-            totalPrice += price;
-            totalWattage += watt;
-            
-            if (id === 'cpu-select') cpuTier = tier;
-            if (id === 'gpu-select') gpuTier = tier;
-
-            const li = document.createElement('li');
-            li.innerHTML = `<span>${opt.dataset.name}</span><span>$${price}</span>`;
-            summaryList.appendChild(li);
-        }
-    });
-
-    if (totalPrice === 0) summaryList.innerHTML = '<li>لم يتم اختيار قطع بعد</li>';
-
-    // تحديث الأرقام في الواجهة
-    document.getElementById('total-price-display').innerText = totalPrice;
-    document.getElementById('wattage-value').innerText = `${totalWattage} W`;
+function initBuilder() {
+    const container = document.getElementById('cards-container');
+    container.innerHTML = '';
     
-    // تحديث أشرطة التقدم
-    const wattPercent = Math.min((totalWattage / 1000) * 100, 100);
-    document.getElementById('wattage-bar').style.width = `${wattPercent}%`;
-
-    let score = 0;
-    if (cpuTier > 0 && gpuTier > 0) {
-        score = Math.round(((cpuTier * 0.4) + (gpuTier * 0.6)) * 10);
-    }
-    document.getElementById('score-value').innerText = `${score} / 100`;
-    document.getElementById('score-bar').style.width = `${score}%`;
-
-    // فحص التوافق وعنق الزجاجة
-    checkStatus();
+    Object.keys(labels).forEach(key => {
+        const card = document.createElement('div');
+        card.className = 'part-card';
+        card.id = `card-${key}`;
+        card.onclick = () => openModal(key);
+        card.innerHTML = `
+            <div>
+                <h4>${labels[key]}</h4>
+                <p id="name-${key}">لم يتم الاختيار</p>
+            </div>
+            <span style="color:var(--accent-color)">+</span>
+        `;
+        container.appendChild(card);
+    });
 }
 
-function checkStatus() {
-    const cpu = document.getElementById('cpu-select').options[document.getElementById('cpu-select').selectedIndex].dataset;
-    const mobo = document.getElementById('mobo-select').options[document.getElementById('mobo-select').selectedIndex].dataset;
-    const gpu = document.getElementById('gpu-select').options[document.getElementById('gpu-select').selectedIndex].dataset;
+function openModal(cat) {
+    currentCat = cat;
+    document.getElementById('modal-title').innerText = `اختيار ${labels[cat]}`;
+    document.getElementById('selection-modal').style.display = 'block';
+    document.getElementById('part-search').value = '';
+    renderList();
+}
 
-    const compText = document.getElementById('comp-text');
-    const bottleText = document.getElementById('bottle-text');
+function closeModal() {
+    document.getElementById('selection-modal').style.display = 'none';
+}
 
-    if (cpu.name !== "none" && mobo.name !== "none") {
-        if (cpu.socket === mobo.socket) {
-            compText.innerText = `✅ متوافق (Socket ${cpu.socket})`;
-        } else {
-            compText.innerText = `❌ خطأ في التوافق: ${cpu.socket} vs ${mobo.socket}`;
+function renderList(search = '') {
+    const list = document.getElementById('parts-list');
+    list.innerHTML = '';
+    const items = fullData[currentCat] || [];
+
+    items.filter(i => i.name.toLowerCase().includes(search.toLowerCase())).forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'part-item';
+        div.innerHTML = `
+            <div style="flex:1">
+                <strong>${item.name}</strong> <br>
+                <small style="color:var(--accent-color)">$${item.price} | ${item.wattage}W</small>
+            </div>
+            <button class="info-btn" onclick="event.stopPropagation(); alert('تفاصيل: ${item.name}\\nالسوكيت: ${item.socket || "N/A"}\\nالأداء: ${item.tier}/10')">i</button>
+            <button class="btn btn-main" style="width:auto; padding:5px 15px; margin:0 10px" onclick="selectItem('${item.name}')">اختيار</button>
+        `;
+        list.appendChild(div);
+    });
+}
+
+function selectItem(name) {
+    const item = fullData[currentCat].find(i => i.name === name);
+    selectedBuild[currentCat] = item;
+    
+    // تحديث الواجهة
+    document.getElementById(`name-${currentCat}`).innerText = item.name;
+    document.getElementById('preview-img').src = item.image;
+    
+    closeModal();
+    updateMetrics();
+}
+
+function updateMetrics() {
+    let total = 0;
+    let wattage = 0;
+    
+    Object.values(selectedBuild).forEach(item => {
+        if(item) {
+            total += item.price;
+            wattage += (item.wattage || 0);
         }
+    });
+
+    document.getElementById('total-price').innerText = total;
+    
+    // فحص التوافق
+    const cpu = selectedBuild.cpus;
+    const mobo = selectedBuild.motherboards;
+    const gpu = selectedBuild.gpus;
+
+    if(cpu && mobo) {
+        const comp = cpu.socket === mobo.socket;
+        document.getElementById('comp-status').innerText = comp ? `✅ متوافق (${cpu.socket})` : `❌ خطأ في السوكيت!`;
+        document.getElementById('comp-status').style.color = comp ? 'var(--accent-color)' : 'red';
     }
 
-    if (cpu.name !== "none" && gpu.name !== "none") {
+    if(cpu && gpu) {
         const diff = Math.abs(cpu.tier - gpu.tier);
-        bottleText.innerText = diff <= 2 ? "✅ توازن أداء ممتاز" : "⚠️ يوجد احتمالية عنق زجاجة";
+        document.getElementById('bottleneck-status').innerText = diff <= 2 ? "✅ توازن ممتاز" : "⚠️ احتمال عنق زجاجة";
     }
 }
 
-function saveBuild() {
-    const build = {};
-    componentIds.forEach(id => build[id] = document.getElementById(id).value);
-    localStorage.setItem(storageKey, JSON.stringify(build));
+function shareBuild() {
+    let text = "🖥️ تجميعة جهازي من SF1-PC:\n";
+    Object.keys(selectedBuild).forEach(key => {
+        if(selectedBuild[key]) text += `- ${labels[key]}: ${selectedBuild[key].name}\n`;
+    });
+    text += `\n💰 الإجمالي: $${document.getElementById('total-price').innerText}`;
+    navigator.clipboard.writeText(text).then(() => alert("تم نسخ التقرير!"));
 }
 
-function loadSavedBuild() {
-    const saved = JSON.parse(localStorage.getItem(storageKey));
-    if (saved) {
-        componentIds.forEach(id => {
-            if (document.getElementById(id)) document.getElementById(id).value = saved[id];
-        });
-        calculateAllMetrics();
-    }
-}
-
-function resetBuilder() {
-    localStorage.removeItem(storageKey);
-    location.reload();
-}
-
-function generateProfessionalReport() {
-    let report = "🖥️ تقرير تجميعة SF1-PC ULTIMATE\n\n";
-    report += `💰 الإجمالي: $${document.getElementById('total-price-display').innerText}\n`;
-    report += `⚡ الطاقة: ${document.getElementById('wattage-value').innerText}\n`;
-    report += `🚀 الأداء: ${document.getElementById('score-value').innerText}\n`;
-    navigator.clipboard.writeText(report).then(() => alert("تم نسخ التقرير!"));
+function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const target = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', target);
+    document.getElementById('theme-toggle').innerText = target === 'dark' ? '🌙' : '☀️';
 }
 
