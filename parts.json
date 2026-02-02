@@ -168,7 +168,37 @@
     {"name": "Average Intel Z590 Motherboard", "price": 180, "socket": "LGA1200", "wattage": 60},
     {"name": "Average Intel Z170 Motherboard", "price": 100, "socket": "LGA1151", "wattage": 45}
   ],
-  "coolers": [
+  "storage": [
+    {"name": "Samsung 980 Pro 1TB NVMe SSD", "price": 110, "wattage": 8, "tier": 0},
+    {"name": "Samsung 980 Pro 2TB NVMe SSD", "price": 180, "wattage": 8, "tier": 0},
+    {"name": "Samsung 980 Pro 4TB NVMe SSD", "price": 320, "wattage": 9, "tier": 0},
+    {"name": "Samsung 9100 Pro 1TB PCIe Gen5 SSD", "price": 190, "wattage": 10, "tier": 0},
+    {"name": "Samsung 9100 Pro 2TB PCIe Gen5 SSD", "price": 300, "wattage": 10, "tier": 0},
+    {"name": "Samsung 9100 Pro 4TB PCIe Gen5 SSD", "price": 550, "wattage": 12, "tier": 0},
+    {"name": "WD_BLACK SN850X 1TB NVMe SSD", "price": 100, "wattage": 8, "tier": 0},
+    {"name": "WD_BLACK SN850X 2TB NVMe SSD", "price": 165, "wattage": 8, "tier": 0},
+    {"name": "WD_BLACK SN850X 4TB NVMe SSD", "price": 300, "wattage": 9, "tier": 0},
+    {"name": "WD_BLACK SN850X 8TB NVMe SSD", "price": 850, "wattage": 10, "tier": 0},
+    {"name": "WD_BLACK SN7100 1TB NVMe SSD", "price": 85, "wattage": 7, "tier": 0},
+    {"name": "WD_BLACK SN7100 2TB NVMe SSD", "price": 140, "wattage": 7, "tier": 0},
+    {"name": "Crucial T705 4TB PCIe Gen5 NVMe SSD", "price": 520, "wattage": 12, "tier": 0},
+    {"name": "Kingston KC3000 2TB NVMe SSD", "price": 150, "wattage": 8, "tier": 0},
+    {"name": "ADATA XPG Gammix S70 Blade 2TB", "price": 145, "wattage": 8, "tier": 0},
+    {"name": "Lexar NM620 1TB NVMe SSD", "price": 65, "wattage": 6, "tier": 0},
+    {"name": "Kingston A400 480GB SATA SSD", "price": 35, "wattage": 4, "tier": 0},
+    {"name": "ADATA SU800 1TB SATA SSD", "price": 60, "wattage": 5, "tier": 0},
+    {"name": "MSI SPATIUM S270 480GB SATA SSD", "price": 38, "wattage": 4, "tier": 0},
+    {"name": "Netac SA500 256GB SATA SSD", "price": 22, "wattage": 3, "tier": 0},
+    {"name": "Seagate BarraCuda 2TB HDD", "price": 55, "wattage": 8, "tier": 0},
+    {"name": "Seagate BarraCuda 8TB HDD", "price": 160, "wattage": 10, "tier": 0},
+    {"name": "WD Blue 4TB HDD", "price": 90, "wattage": 8, "tier": 0},
+    {"name": "WD Black 6TB HDD", "price": 180, "wattage": 10, "tier": 0},
+    {"name": "WD Purple 4TB HDD (Surveillance)", "price": 100, "wattage": 8, "tier": 0},
+    {"name": "WD Gold 16TB Enterprise HDD", "price": 400, "wattage": 12, "tier": 0},
+    {"name": "Toshiba 3TB HDD", "price": 70, "wattage": 8, "tier": 0},
+    {"name": "SanDisk Extreme Portable SSD 2TB USB", "price": 170, "wattage": 5, "tier": 0}
+  ],
+ "coolers": [
     {"name": "Noctua NH-D15 Chromax.Black", "price": 120, "wattage": 5, "tier": 10},
     {"name": "be quiet! Dark Rock Pro 5", "price": 100, "wattage": 5, "tier": 9},
     {"name": "Thermalright Peerless Assassin 120 SE", "price": 35, "wattage": 5, "tier": 8},
@@ -229,6 +259,6 @@
     {"name": "DeepCool DQ850-M-V2L (850W Gold)", "price": 120, "wattage": 850, "tier": 7},
     {"name": "XPG Core Reactor 850W Gold", "price": 125, "wattage": 850, "tier": 8},
     {"name": "AeroCool LUX 750W RGB", "price": 65, "wattage": 750, "tier": 4}
-  ],
+  ]
 
-{
+}
