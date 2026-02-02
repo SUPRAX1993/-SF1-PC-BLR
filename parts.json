@@ -1,5 +1,5 @@
-"cpus": [
-    /* Intel Core i3 Series (Classic to Modern) */
+{
+  "cpus": [
     {"name": "Intel Core i3-530", "price": 15, "socket": "LGA1156", "wattage": 73, "tier": 1},
     {"name": "Intel Core i3-540", "price": 18, "socket": "LGA1156", "wattage": 73, "tier": 1},
     {"name": "Intel Core i3-2100", "price": 20, "socket": "LGA1155", "wattage": 65, "tier": 1},
@@ -20,8 +20,6 @@
     {"name": "Intel Core i3-12100", "price": 110, "socket": "LGA1700", "wattage": 60, "tier": 5},
     {"name": "Intel Core i3-13100", "price": 130, "socket": "LGA1700", "wattage": 60, "tier": 5},
     {"name": "Intel Core i3-14100", "price": 140, "socket": "LGA1700", "wattage": 60, "tier": 5},
-
-    /* Intel Core i5 Series */
     {"name": "Intel Core i5-2400", "price": 35, "socket": "LGA1155", "wattage": 95, "tier": 2},
     {"name": "Intel Core i5-2500K", "price": 45, "socket": "LGA1155", "wattage": 95, "tier": 2},
     {"name": "Intel Core i5-4670K", "price": 60, "socket": "LGA1150", "wattage": 84, "tier": 3},
@@ -32,8 +30,6 @@
     {"name": "Intel Core i5-12400", "price": 160, "socket": "LGA1700", "wattage": 65, "tier": 6},
     {"name": "Intel Core i5-13400", "price": 210, "socket": "LGA1700", "wattage": 65, "tier": 7},
     {"name": "Intel Core i5-14600", "price": 280, "socket": "LGA1700", "wattage": 154, "tier": 8},
-
-    /* Intel Core i7 & i9 & Ultra */
     {"name": "Intel Core i7-2600K", "price": 60, "socket": "LGA1155", "wattage": 95, "tier": 3},
     {"name": "Intel Core i7-4770K", "price": 90, "socket": "LGA1150", "wattage": 84, "tier": 4},
     {"name": "Intel Core i7-8700K", "price": 180, "socket": "LGA1151-v2", "wattage": 95, "tier": 6},
@@ -43,18 +39,12 @@
     {"name": "Intel Core i9-12900K", "price": 350, "socket": "LGA1700", "wattage": 241, "tier": 9},
     {"name": "Intel Core i9-14900K", "price": 580, "socket": "LGA1700", "wattage": 253, "tier": 10},
     {"name": "Intel Core Ultra 3 205", "price": 170, "socket": "LGA1851", "wattage": 65, "tier": 4},
-
-    /* Legacy Intel */
     {"name": "Intel Core 2 Duo E6600", "price": 10, "socket": "LGA775", "wattage": 65, "tier": 1},
     {"name": "Intel Xeon E5-2680", "price": 50, "socket": "LGA2011", "wattage": 130, "tier": 5},
-
-    /* AMD Athlon & FX Series */
     {"name": "AMD Athlon X4 860K", "price": 40, "socket": "FM2+", "wattage": 95, "tier": 1},
     {"name": "AMD FX-6300", "price": 50, "socket": "AM3+", "wattage": 95, "tier": 2},
     {"name": "AMD FX-8350", "price": 75, "socket": "AM3+", "wattage": 125, "tier": 2},
     {"name": "AMD FX-9590", "price": 100, "socket": "AM3+", "wattage": 220, "tier": 3},
-
-    /* AMD Ryzen Series */
     {"name": "AMD Ryzen 3 1200", "price": 50, "socket": "AM4", "wattage": 65, "tier": 2},
     {"name": "AMD Ryzen 5 1600", "price": 80, "socket": "AM4", "wattage": 65, "tier": 4},
     {"name": "AMD Ryzen 7 1700", "price": 90, "socket": "AM4", "wattage": 65, "tier": 4},
@@ -66,304 +56,70 @@
     {"name": "AMD Ryzen 7 7800X", "price": 360, "socket": "AM5", "wattage": 105, "tier": 9},
     {"name": "AMD Ryzen 9 7950X3D", "price": 630, "socket": "AM5", "wattage": 120, "tier": 10},
     {"name": "AMD Ryzen 9 9900X3D", "price": 750, "socket": "AM5", "wattage": 120, "tier": 10},
-
-    /* Workstation / EPYC / Threadripper */
     {"name": "AMD Ryzen Threadripper 3960X", "price": 1400, "socket": "sTRX4", "wattage": 280, "tier": 10},
     {"name": "AMD Ryzen Threadripper 5995WX", "price": 4800, "socket": "sWRX8", "wattage": 280, "tier": 10},
     {"name": "AMD EPYC 7742", "price": 3500, "socket": "SP3", "wattage": 225, "tier": 10}
-]
-
-"ram":[
-    /* DDR4 Series */
+  ],
+  "ram": [
     {"name": "Corsair Vengeance LPX 4GB DDR4-2133MHz", "price": 20, "wattage": 5, "tier": 0},
-    {"name": "Corsair Vengeance LPX 4GB DDR4-2400MHz", "price": 22, "wattage": 5, "tier": 0},
-    {"name": "Corsair Vengeance LPX 8GB DDR4-2666MHz", "price": 30, "wattage": 6, "tier": 0},
     {"name": "Corsair Vengeance LPX 8GB DDR4-3000MHz", "price": 35, "wattage": 6, "tier": 0},
     {"name": "Corsair Vengeance LPX 16GB DDR4-3200MHz", "price": 55, "wattage": 7, "tier": 0},
     {"name": "Corsair Vengeance LPX 32GB DDR4-3600MHz", "price": 95, "wattage": 9, "tier": 0},
     {"name": "G.Skill Ripjaws V 16GB DDR4-3200MHz", "price": 50, "wattage": 7, "tier": 0},
     {"name": "G.Skill Trident Z RGB 32GB DDR4-4000MHz", "price": 130, "wattage": 10, "tier": 0},
     {"name": "Kingston Fury Beast 16GB DDR4-3200MHz", "price": 55, "wattage": 7, "tier": 0},
-    {"name": "Kingston HyperX Predator 16GB DDR4-3000MHz", "price": 60, "wattage": 7, "tier": 0},
     {"name": "Crucial Ballistix 16GB DDR4-3600MHz", "price": 70, "wattage": 8, "tier": 0},
-    {"name": "ADATA XPG Gammix D30 16GB DDR4-3600MHz", "price": 58, "wattage": 8, "tier": 0},
     {"name": "TeamGroup T-Force Delta RGB 16GB DDR4-3600MHz", "price": 65, "wattage": 9, "tier": 0},
-    {"name": "Patriot Viper Steel 8GB DDR4-3200MHz", "price": 32, "wattage": 6, "tier": 0},
-    {"name": "PNY XLR8 8GB DDR4-3200MHz", "price": 30, "wattage": 6, "tier": 0},
     {"name": "Lexar DDR4 8GB-3200MHz", "price": 28, "wattage": 5, "tier": 0},
-    {"name": "Samsung DDR4 16GB-3200MHz", "price": 48, "wattage": 7, "tier": 0},
-
-    /* DDR5 Series */
-    {"name": "Corsair Vengeance DDR5 16GB-5200MHz", "price": 75, "wattage": 8, "tier": 0},
     {"name": "Corsair Vengeance DDR5 32GB-6000MHz", "price": 120, "wattage": 10, "tier": 0},
-    {"name": "Corsair Dominator Platinum RGB 32GB-7800MHz", "price": 260, "wattage": 15, "tier": 0},
     {"name": "G.Skill Trident Z5 RGB 32GB-6400MHz", "price": 145, "wattage": 12, "tier": 0},
-    {"name": "G.Skill Flare X5 64GB DDR5-6000MHz", "price": 215, "wattage": 14, "tier": 0},
-    {"name": "G.Skill Extreme 256GB DDR5-6000MHz", "price": 980, "wattage": 35, "tier": 0},
     {"name": "Kingston Fury Renegade 64GB DDR5-6400MHz", "price": 270, "wattage": 15, "tier": 0},
-    {"name": "Crucial Pro Overclocking 32GB-6400MHz", "price": 130, "wattage": 11, "tier": 0},
-    {"name": "ADATA XPG Lancer RGB 32GB-6400MHz", "price": 135, "wattage": 12, "tier": 0},
-    {"name": "TeamGroup T-Force Xtreem 32GB-8000MHz", "price": 290, "wattage": 16, "tier": 0},
-    {"name": "Patriot Viper Venom 64GB DDR5-6400MHz", "price": 240, "wattage": 14, "tier": 0},
-    {"name": "Lexar Ares RGB 32GB-6400MHz", "price": 125, "wattage": 11, "tier": 0},
-    {"name": "Samsung DDR5 64GB-6400MHz", "price": 220, "wattage": 14, "tier": 0},
-    {"name": "Hiksemi DDR5 16GB-4800MHz", "price": 50, "wattage": 8, "tier": 0}
-]
-
+    {"name": "Lexar Ares RGB 32GB-6400MHz", "price": 125, "wattage": 11, "tier": 0}
+  ],
   "gpus": [
-    /* NVIDIA RTX 50 Series */
     {"name": "MSI GeForce RTX 5090 (32GB GDDR7)", "price": 2000, "wattage": 500, "tier": 10},
     {"name": "ASUS ROG Strix GeForce RTX 5090", "price": 2200, "wattage": 550, "tier": 10},
-    {"name": "Gigabyte GeForce RTX 5090", "price": 2050, "wattage": 500, "tier": 10},
-    {"name": "Zotac GeForce RTX 5090", "price": 1950, "wattage": 500, "tier": 10},
-    {"name": "EVGA GeForce RTX 5090", "price": 2100, "wattage": 520, "tier": 10},
     {"name": "MSI GeForce RTX 5080", "price": 1200, "wattage": 350, "tier": 9},
-    {"name": "ASUS ROG Strix RTX 5080", "price": 1350, "wattage": 400, "tier": 9},
-    {"name": "MSI GeForce RTX 5070 Ti", "price": 850, "wattage": 285, "tier": 8},
-    {"name": "ASUS TUF Gaming RTX 5070 Ti", "price": 890, "wattage": 300, "tier": 8},
-    {"name": "Zotac RTX 5060 Ti AMP", "price": 480, "wattage": 200, "tier": 6},
-    {"name": "Gigabyte RTX 5050 OC", "price": 250, "wattage": 100, "tier": 4},
-
-    /* NVIDIA RTX 40 Series */
     {"name": "ASUS ROG Strix RTX 4090", "price": 1900, "wattage": 450, "tier": 10},
     {"name": "MSI RTX 4080 Super", "price": 1050, "wattage": 320, "tier": 9},
-    {"name": "Gigabyte RTX 4070 Ti Super", "price": 820, "wattage": 285, "tier": 8},
     {"name": "Zotac RTX 4060 Twin Edge", "price": 300, "wattage": 115, "tier": 5},
-
-    /* NVIDIA RTX 30 Series */
-    {"name": "MSI RTX 3090 Ti", "price": 1100, "wattage": 450, "tier": 9},
     {"name": "ASUS ROG Strix RTX 3080", "price": 750, "wattage": 320, "tier": 8},
-    {"name": "EVGA RTX 3070 XC3", "price": 500, "wattage": 220, "tier": 7},
-    {"name": "Zotac RTX 3060 AMP", "price": 320, "wattage": 170, "tier": 4},
-
-    /* NVIDIA GTX / 16 Series */
-    {"name": "MSI GTX 1660 Super Gaming X", "price": 210, "wattage": 125, "tier": 3},
-    {"name": "ASUS Phoenix GTX 1650", "price": 155, "wattage": 75, "tier": 2},
-
-    /* AMD Radeon RX 9000 Series */
-    {"name": "Sapphire Radeon RX 9070 XT", "price": 950, "wattage": 320, "tier": 9},
-    {"name": "XFX Radeon RX 9060 XT", "price": 550, "wattage": 240, "tier": 7},
-
-    /* AMD Radeon RX 7000 Series */
-    {"name": "Sapphire Pulse RX 7900 XTX", "price": 980, "wattage": 355, "tier": 9},
-    {"name": "ASUS TUF RX 7800 XT", "price": 510, "wattage": 263, "tier": 7},
-    {"name": "MSI RX 7600 XT", "price": 330, "wattage": 190, "tier": 5},
-
-    /* AMD Radeon RX 6000 Series */
-    {"name": "ASUS ROG Strix RX 6900 XT", "price": 720, "wattage": 300, "tier": 8},
-    {"name": "XFX Swift RX 6600 XT", "price": 260, "wattage": 160, "tier": 4},
-
-    /* Intel Arc Series */
-    {"name": "Intel Arc B580 (Battlemage)", "price": 280, "wattage": 190, "tier": 5},
-    {"name": "Intel Arc A380", "price": 120, "wattage": 75, "tier": 2}
+    {"name": "Sapphire Pulse RX 7900 XTX", "price": 980, "wattage": 355, "tier": 9}
   ],
-
   "motherboards": [
-    /* ASUS - High End & Creator */
     {"name": "ASUS ROG MAXIMUS Z790 HERO", "price": 630, "socket": "LGA1700", "wattage": 60},
     {"name": "ASUS PROART Z890-CREATOR WIFI", "price": 550, "socket": "LGA1851", "wattage": 55},
-    {"name": "ASUS PROART Z790-CREATOR WIFI", "price": 470, "socket": "LGA1700", "wattage": 55},
     {"name": "ASUS PROART X670E-CREATOR WIFI", "price": 480, "socket": "AM5", "wattage": 60},
-    {"name": "ASUS ROG STRIX B550-F GAMING WIFI II", "price": 190, "socket": "AM4", "wattage": 45},
-    {"name": "ASUS ROG STRIX B760-I GAMING WIFI", "price": 210, "socket": "LGA1700", "wattage": 40},
-    {"name": "ASUS TUF GAMING Z790-PRO WIFI", "price": 300, "socket": "LGA1700", "wattage": 50},
-    {"name": "ASUS PRIME Z790-A WIFI", "price": 280, "socket": "LGA1700", "wattage": 50},
-
-    /* MSI - Powerhouse & Gaming */
     {"name": "MSI MEG X870E GODLIKE X EDITION", "price": 1200, "socket": "AM5", "wattage": 85},
-    {"name": "MSI MEG X870E UNIFY-X MAX", "price": 550, "socket": "AM5", "wattage": 70},
-    {"name": "MSI MAG Z890 TOMAHAWK WIFI", "price": 360, "socket": "LGA1851", "wattage": 55},
     {"name": "MSI MAG B550 TOMAHAWK", "price": 170, "socket": "AM4", "wattage": 45},
-    {"name": "MSI MPG X570 GAMING PLUS", "price": 190, "socket": "AM4", "wattage": 50},
-    {"name": "MSI B850M GAMING PLUS WIFI6E", "price": 220, "socket": "AM5", "wattage": 40},
-    {"name": "MSI PRO B840M-P WIFI6E", "price": 180, "socket": "LGA1851", "wattage": 40},
-    {"name": "MSI MAG B660M MORTAR DDR4", "price": 150, "socket": "LGA1700", "wattage": 40},
-
-    /* GIGABYTE & ASRock */
-    {"name": "GIGABYTE X870E AORUS ELITE WIFI7 ICE", "price": 440, "socket": "AM5", "wattage": 60},
-    {"name": "GIGABYTE B650 AORUS ELITE AX", "price": 230, "socket": "AM5", "wattage": 50},
-    {"name": "GIGABYTE Intel B760M GAMING X GEN5", "price": 160, "socket": "LGA1700", "wattage": 45},
-    {"name": "GIGABYTE Intel H610M H V2", "price": 85, "socket": "LGA1700", "wattage": 35},
-    {"name": "ASRock B860 STEEL LEGEND WIFI", "price": 200, "socket": "LGA1851", "wattage": 45},
-    {"name": "ASRock X870 AORUS ELITE WIFI7", "price": 400, "socket": "AM5", "wattage": 55},
-
-    /* Average / Legacy Motherboards (For older CPUs) */
-    {"name": "Average AMD B450 Motherboard", "price": 90, "socket": "AM4", "wattage": 40},
-    {"name": "Average AMD X570 Motherboard", "price": 210, "socket": "AM4", "wattage": 55},
-    {"name": "Average Intel Z390 Motherboard", "price": 130, "socket": "LGA1151-v2", "wattage": 50},
-    {"name": "Average Intel Z490 Motherboard", "price": 160, "socket": "LGA1200", "wattage": 55},
-    {"name": "Average Intel Z590 Motherboard", "price": 180, "socket": "LGA1200", "wattage": 60},
-    {"name": "Average Intel Z170 Motherboard", "price": 100, "socket": "LGA1151", "wattage": 45}
+    {"name": "GIGABYTE Intel B760M GAMING X GEN5", "price": 160, "socket": "LGA1700", "wattage": 45}
   ],
-
   "storage": [
-    /* NVMe SSD - Samsung */
     {"name": "Samsung 980 Pro 1TB NVMe SSD", "price": 110, "wattage": 8, "tier": 0},
-    {"name": "Samsung 980 Pro 2TB NVMe SSD", "price": 180, "wattage": 8, "tier": 0},
-    {"name": "Samsung 980 Pro 4TB NVMe SSD", "price": 320, "wattage": 9, "tier": 0},
-    {"name": "Samsung 9100 Pro 1TB PCIe Gen5 SSD", "price": 190, "wattage": 10, "tier": 0},
     {"name": "Samsung 9100 Pro 2TB PCIe Gen5 SSD", "price": 300, "wattage": 10, "tier": 0},
-    {"name": "Samsung 9100 Pro 4TB PCIe Gen5 SSD", "price": 550, "wattage": 12, "tier": 0},
-
-    /* NVMe SSD - Western Digital */
-    {"name": "WD_BLACK SN850X 1TB NVMe SSD", "price": 100, "wattage": 8, "tier": 0},
     {"name": "WD_BLACK SN850X 2TB NVMe SSD", "price": 165, "wattage": 8, "tier": 0},
-    {"name": "WD_BLACK SN850X 4TB NVMe SSD", "price": 300, "wattage": 9, "tier": 0},
-    {"name": "WD_BLACK SN850X 8TB NVMe SSD", "price": 850, "wattage": 10, "tier": 0},
-    {"name": "WD_BLACK SN7100 1TB NVMe SSD", "price": 85, "wattage": 7, "tier": 0},
-    {"name": "WD_BLACK SN7100 2TB NVMe SSD", "price": 140, "wattage": 7, "tier": 0},
-
-    /* NVMe SSD - Other Brands */
-    {"name": "Crucial T705 4TB PCIe Gen5 NVMe SSD", "price": 520, "wattage": 12, "tier": 0},
-    {"name": "Kingston KC3000 2TB NVMe SSD", "price": 150, "wattage": 8, "tier": 0},
-    {"name": "ADATA XPG Gammix S70 Blade 2TB", "price": 145, "wattage": 8, "tier": 0},
-    {"name": "Lexar NM620 1TB NVMe SSD", "price": 65, "wattage": 6, "tier": 0},
-
-    /* SATA SSD */
-    {"name": "Kingston A400 480GB SATA SSD", "price": 35, "wattage": 4, "tier": 0},
-    {"name": "ADATA SU800 1TB SATA SSD", "price": 60, "wattage": 5, "tier": 0},
-    {"name": "MSI SPATIUM S270 480GB SATA SSD", "price": 38, "wattage": 4, "tier": 0},
-    {"name": "Netac SA500 256GB SATA SSD", "price": 22, "wattage": 3, "tier": 0},
-
-    /* Hard Disk Drives (HDD) */
-    {"name": "Seagate BarraCuda 2TB HDD", "price": 55, "wattage": 8, "tier": 0},
-    {"name": "Seagate BarraCuda 8TB HDD", "price": 160, "wattage": 10, "tier": 0},
-    {"name": "WD Blue 4TB HDD", "price": 90, "wattage": 8, "tier": 0},
-    {"name": "WD Black 6TB HDD", "price": 180, "wattage": 10, "tier": 0},
-    {"name": "WD Purple 4TB HDD (Surveillance)", "price": 100, "wattage": 8, "tier": 0},
-    {"name": "WD Gold 16TB Enterprise HDD", "price": 400, "wattage": 12, "tier": 0},
-    {"name": "Toshiba 3TB HDD", "price": 70, "wattage": 8, "tier": 0},
-
-    /* Portable SSD */
-    {"name": "SanDisk Extreme Portable SSD 2TB USB", "price": 170, "wattage": 5, "tier": 0}
+    {"name": "Seagate BarraCuda 2TB HDD", "price": 55, "wattage": 8, "tier": 0}
   ],
-
   "coolers": [
-    /* Air Coolers - High End */
     {"name": "Noctua NH-D15 G2", "price": 150, "wattage": 10, "tier": 0},
-    {"name": "Noctua NH-D15", "price": 110, "wattage": 10, "tier": 0},
-    {"name": "Noctua NH-P1 (Passive)", "price": 115, "wattage": 0, "tier": 0},
-    {"name": "Arctic Freezer 36", "price": 45, "wattage": 5, "tier": 0},
-    {"name": "DeepCool GAMMAXX AG300", "price": 25, "wattage": 5, "tier": 0},
-
-    /* Air Coolers - MSI & Specialized */
-    {"name": "MSI Core Frozr XL", "price": 100, "wattage": 8, "tier": 0},
-    {"name": "MSI Core Frozr L", "price": 60, "wattage": 6, "tier": 0},
-    {"name": "Spear H400PRO 120mm ARGB", "price": 40, "wattage": 5, "tier": 0},
-    {"name": "Aerocool Cylon 4F ARGB", "price": 35, "wattage": 5, "tier": 0},
-    {"name": "Intel Stock Air Cooler", "price": 5, "wattage": 5, "tier": 0},
-    {"name": "AMD Wraith Prism RGB", "price": 30, "wattage": 5, "tier": 0},
-
-    /* Liquid AIO - ASUS ROG & ProArt */
-    {"name": "ASUS ROG RYUO IV SLC 360 ARGB", "price": 350, "wattage": 35, "tier": 0},
     {"name": "ASUS ROG Ryujin III 360 ARGB", "price": 330, "wattage": 40, "tier": 0},
-    {"name": "ASUS ProArt LC 420 AIO", "price": 280, "wattage": 30, "tier": 0},
-    {"name": "ASUS TUF Gaming LC III 360 ARGB", "price": 160, "wattage": 25, "tier": 0},
-
-    /* Liquid AIO - NZXT & Lian Li */
     {"name": "NZXT Kraken Elite 360mm RGB", "price": 290, "wattage": 30, "tier": 0},
-    {"name": "NZXT Kraken Elite 240mm RGB", "price": 240, "wattage": 25, "tier": 0},
-    {"name": "NZXT Kraken X63 White", "price": 150, "wattage": 25, "tier": 0},
-    {"name": "Lian Li Hydroshift II-C 360TL RGB", "price": 190, "wattage": 30, "tier": 0},
-    {"name": "Lian Li Hydroshift II LCD-S 360TL ARGB", "price": 260, "wattage": 35, "tier": 0},
-
-    /* Liquid AIO - Others & LCD Displays */
-    {"name": "TRYX Panorama SE 360 ARGB AIO", "price": 300, "wattage": 35, "tier": 0},
-    {"name": "Corsair iCUE H150i ELITE LCD", "price": 280, "wattage": 35, "tier": 0},
-    {"name": "Corsair Hydro Series H100i", "price": 120, "wattage": 25, "tier": 0},
-    {"name": "Xigmatek Connect 360 Smart LCD", "price": 170, "wattage": 30, "tier": 0},
-    {"name": "Jungle Leopard PRO FLOW 360 AIO", "price": 140, "wattage": 30, "tier": 0},
-    {"name": "GAMDIAS AURA GL360 RGB", "price": 100, "wattage": 25, "tier": 0},
-    {"name": "Xigmatek Neon Aqua 360 AIO", "price": 110, "wattage": 25, "tier": 0}
+    {"name": "Arctic Freezer 36", "price": 45, "wattage": 5, "tier": 0}
   ],
-
   "cases": [
-    /* Corsair Cases */
-    {"name": "Corsair 4000D Airflow (Black/White)", "price": 105, "wattage": 0, "tier": 0},
-    {"name": "Corsair iCUE 5000X RGB", "price": 210, "wattage": 0, "tier": 0},
-    {"name": "Corsair 5000D Max Airflow", "price": 190, "wattage": 0, "tier": 0},
-    {"name": "Corsair Crystal 680X RGB", "price": 260, "wattage": 0, "tier": 0},
-
-    /* NZXT Cases */
+    {"name": "Corsair 4000D Airflow", "price": 105, "wattage": 0, "tier": 0},
     {"name": "NZXT H510 Flow", "price": 90, "wattage": 0, "tier": 0},
-    {"name": "NZXT H710i Premium Mid-Tower", "price": 170, "wattage": 0, "tier": 0},
-    {"name": "NZXT S340 Elite (Classic)", "price": 95, "wattage": 0, "tier": 0},
-
-    /* ASUS & MSI (Panoramic / Fish Tank) */
     {"name": "MSI MAG PANO M100R PZ", "price": 110, "wattage": 0, "tier": 0},
-    {"name": "ASUS TUF Gaming GT502 Horizon", "price": 160, "wattage": 0, "tier": 0},
-    {"name": "ASUS A31 Plus Case", "price": 80, "wattage": 0, "tier": 0},
-
-    /* Fractal & Lian Li (Aesthetic & Mesh) */
-    {"name": "Fractal Design North (Chalk White/Wood)", "price": 140, "wattage": 0, "tier": 0},
-    {"name": "Fractal Design Torrent", "price": 190, "wattage": 0, "tier": 0},
-    {"name": "Lian Li LANCOOL 216 Mesh", "price": 100, "wattage": 0, "tier": 0},
-    {"name": "Lian Li LANCOOL III RGB", "price": 150, "wattage": 0, "tier": 0},
-
-    /* Specialized & Unique Cases */
-    {"name": "SilverStone FLP01 (Retro Beige Case)", "price": 150, "wattage": 0, "tier": 0},
-    {"name": "SilverStone FLP02 Beige Tower", "price": 170, "wattage": 0, "tier": 0},
-    {"name": "HYTE X50 ATX Mid-Tower", "price": 180, "wattage": 0, "tier": 0},
-    {"name": "Thermaltake CTE E600 MX", "price": 190, "wattage": 0, "tier": 0},
-
-    /* Cooler Master & Xigmatek */
-    {"name": "Cooler Master MasterBox TD500 Mesh", "price": 100, "wattage": 0, "tier": 0},
-    {"name": "Cooler Master Cosmos C700M", "price": 450, "wattage": 0, "tier": 0},
-    {"name": "Xigmatek Cubi II Type C (7 Fans)", "price": 120, "wattage": 0, "tier": 0},
-    {"name": "Xigmatek Osiris ARGB Case", "price": 85, "wattage": 0, "tier": 0},
-
-    /* Other Brands (GIGABYTE, Aerocool, etc.) */
-    {"name": "AORUS C400 Glass Case", "price": 140, "wattage": 0, "tier": 0},
-    {"name": "Aerocool P500C ARGB Case", "price": 75, "wattage": 0, "tier": 0},
-    {"name": "Acegeek Nebula Black ATX", "price": 65, "wattage": 0, "tier": 0},
-    {"name": "CyberPowerPC MA-01 Curved Glass", "price": 130, "wattage": 0, "tier": 0}
+    {"name": "ASUS TUF Gaming GT502", "price": 160, "wattage": 0, "tier": 0}
   ],
   "psu": [
-    {"name": "Corsair RM850x Gold", "price": 130, "wattage": 0, "tier": 0},
-    {"name": "EVGA SuperNova 750 G5", "price": 110, "wattage": 0, "tier": 0},
-    {"name": "MSI MPG A1000G PCIE5", "price": 170, "wattage": 0, "tier": 0},
-    {"name": "Deepcool PK550D Bronze", "price": 50, "wattage": 0, "tier": 0}
-  ]
-
-  "psu": [
-    /* Corsair */
-    {"name": "Corsair CX450 (450W)", "price": 50, "wattage": 450, "tier": 0},
     {"name": "Corsair CX750 (750W)", "price": 85, "wattage": 750, "tier": 0},
-    {"name": "Corsair RM850x Gold (850W)", "price": 140, "wattage": 850, "tier": 0},
-    {"name": "Corsair SF600 (SFX)", "price": 125, "wattage": 600, "tier": 0},
-
-    /* EVGA */
-    {"name": "EVGA 550 B5 (550W Bronze)", "price": 60, "wattage": 550, "tier": 0},
-    {"name": "EVGA SuperNOVA 850 GA (850W Gold)", "price": 130, "wattage": 850, "tier": 0},
-    {"name": "EVGA SuperNOVA 1000 G+ (1000W)", "price": 180, "wattage": 1000, "tier": 0},
-
-    /* Seasonic (The Legend) */
-    {"name": "Seasonic S12III 550 (550W)", "price": 55, "wattage": 550, "tier": 0},
-    {"name": "Seasonic PRIME GX-850 (850W Gold)", "price": 160, "wattage": 850, "tier": 0},
-    {"name": "Seasonic PRIME TX-1600 (1600W Titanium)", "price": 500, "wattage": 1600, "tier": 0},
-
-    /* MSI & Gigabyte */
-    {"name": "MSI MAG A750GL PCIE5 (750W Gold)", "price": 110, "wattage": 750, "tier": 0},
-    {"name": "MSI MAG A850GL GOLD (850W)", "price": 130, "wattage": 850, "tier": 0},
-    {"name": "Gigabyte GP-UD1000GM (1000W Gold)", "price": 160, "wattage": 1000, "tier": 0},
-
-    /* ASUS ROG & TUF */
-    {"name": "ASUS TUF Gaming 650W Gold", "price": 95, "wattage": 650, "tier": 0},
-    {"name": "ASUS ROG THOR 850W Platinum", "price": 240, "wattage": 850, "tier": 0},
+    {"name": "Corsair RM850x Gold", "price": 140, "wattage": 850, "tier": 0},
+    {"name": "EVGA SuperNOVA 1000 G+", "price": 180, "wattage": 1000, "tier": 0},
+    {"name": "Seasonic PRIME TX-1600 (1600W)", "price": 500, "wattage": 1600, "tier": 0},
+    {"name": "MSI MAG A850GL GOLD", "price": 130, "wattage": 850, "tier": 0},
     {"name": "ASUS ROG THOR 1000W Platinum II", "price": 320, "wattage": 1000, "tier": 0},
-
-    /* Cooler Master & Thermaltake */
-    {"name": "Cooler Master MWE Gold 750 V2", "price": 105, "wattage": 750, "tier": 0},
-    {"name": "Cooler Master XG Platinum 850", "price": 170, "wattage": 850, "tier": 0},
-    {"name": "Thermaltake Toughpower 850W Platinum", "price": 160, "wattage": 850, "tier": 0},
-    {"name": "Thermaltake Smart 600W (White)", "price": 45, "wattage": 600, "tier": 0},
-
-    /* Be quiet! & Others */
-    {"name": "Be quiet! Dark Power Pro 12 850W", "price": 250, "wattage": 850, "tier": 0},
-    {"name": "XPG Core Reactor 750W Gold", "price": 115, "wattage": 750, "tier": 0},
-    {"name": "DeepCool DA750 (750W Bronze)", "price": 70, "wattage": 750, "tier": 0},
-    {"name": "AeroCool LUX 650W RGB", "price": 55, "wattage": 650, "tier": 0}
+    {"name": "Be quiet! Dark Power Pro 12 850W", "price": 250, "wattage": 850, "tier": 0}
   ]
-
 }
 
