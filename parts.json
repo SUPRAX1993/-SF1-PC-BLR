@@ -92,7 +92,7 @@
     {"name": "Lexar Ares RGB 32GB-6400MHz", "price": 125, "wattage": 11, "tier": 0},
     {"name": "Samsung DDR5 64GB-6400MHz", "price": 220, "wattage": 14, "tier": 0},
     {"name": "Hiksemi DDR5 16GB-4800MHz", "price": 50, "wattage": 8, "tier": 0}
-  ]
+  ],
   "gpus": [
     {"name": "MSI GeForce RTX 5090 (32GB GDDR7)", "price": 2000, "wattage": 500, "tier": 10, "image": ""},
     {"name": "ASUS ROG Strix RTX 5090", "price": 2200, "wattage": 550, "tier": 10, "image": ""},
@@ -137,7 +137,7 @@
     {"name": "Intel Arc B580 (Battlemage)", "price": 280, "wattage": 190, "tier": 5, "image": ""},
     {"name": "Intel Arc B570", "price": 230, "wattage": 150, "tier": 4, "image": ""},
     {"name": "Intel Arc A380", "price": 120, "wattage": 75, "tier": 2, "image": ""}
-  ]
+  ],
   "motherboards": [
     {"name": "ASUS ROG MAXIMUS Z790 HERO", "price": 630, "socket": "LGA1700", "wattage": 60},
     {"name": "ASUS PROART Z890-CREATOR WIFI", "price": 550, "socket": "LGA1851", "wattage": 55},
@@ -207,7 +207,7 @@
     {"name": "DeepCool CH560 Digital", "price": 100, "tier": 7, "image": ""},
     {"name": "Montech AIR 903 MAX", "price": 75, "tier": 6, "image": ""},
     {"name": "Thermaltake Ceres 500 TG ARGB", "price": 140, "tier": 8, "image": ""}
-  ]
+  ],
   "psu": [
     {"name": "Corsair RM1000x Shift (80+ Gold)", "price": 210, "wattage": 1000, "tier": 10},
     {"name": "Corsair RM850x Gold (850W)", "price": 140, "wattage": 850, "tier": 9},
@@ -229,6 +229,6 @@
     {"name": "DeepCool DQ850-M-V2L (850W Gold)", "price": 120, "wattage": 850, "tier": 7},
     {"name": "XPG Core Reactor 850W Gold", "price": 125, "wattage": 850, "tier": 8},
     {"name": "AeroCool LUX 750W RGB", "price": 65, "wattage": 750, "tier": 4}
-  ]
+  ],
 
 }
