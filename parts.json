@@ -1,234 +1,93 @@
 {
   "cpus": [
-    {
-      "name": "Intel Core i9-14900K",
-      "price": 580,
-      "socket": "LGA1700",
-      "wattage": 253,
-      "tier": 10,
-      "image": "https://m.media-amazon.com/images/I/61K-o2fF+ZL._AC_SL1000_.jpg"
-    },
-    {
-      "name": "Intel Core i7-14700K",
-      "price": 400,
-      "socket": "LGA1700",
-      "wattage": 253,
-      "tier": 9,
-      "image": "https://m.media-amazon.com/images/I/61S7d2nZ0GL._AC_SL1000_.jpg"
-    },
-    {
-      "name": "Intel Core i5-13600K",
-      "price": 290,
-      "socket": "LGA1700",
-      "wattage": 181,
-      "tier": 7,
-      "image": "https://m.media-amazon.com/images/I/61-A7u4-eBL._AC_SL1000_.jpg"
-    },
-    {
-      "name": "AMD Ryzen 9 7950X3D",
-      "price": 650,
-      "socket": "AM5",
-      "wattage": 120,
-      "tier": 10,
-      "image": "https://m.media-amazon.com/images/I/51j1-a+L60L._AC_SL1000_.jpg"
-    },
-    {
-      "name": "AMD Ryzen 7 7800X3D",
-      "price": 380,
-      "socket": "AM5",
-      "wattage": 120,
-      "tier": 9,
-      "image": "https://m.media-amazon.com/images/I/51w7gg8y3QL._AC_SL1000_.jpg"
-    },
-    {
-      "name": "AMD Ryzen 5 7600X",
-      "price": 230,
-      "socket": "AM5",
-      "wattage": 105,
-      "tier": 6,
-      "image": "https://m.media-amazon.com/images/I/51a37cm45AL._AC_SL1000_.jpg"
-    }
+    {"name": "Intel i9-14900K (24C/32T, 6.0GHz)", "price": 580, "socket": "LGA1700", "wattage": 253, "tier": 10, "image": ""},
+    {"name": "Intel i7-14700K (20C/28T, 5.6GHz)", "price": 400, "socket": "LGA1700", "wattage": 253, "tier": 9, "image": ""},
+    {"name": "Intel i5-14600K (14C/20T, 5.3GHz)", "price": 320, "socket": "LGA1700", "wattage": 181, "tier": 8, "image": ""},
+    {"name": "Intel i5-13400F (10C/16T, 4.6GHz)", "price": 200, "socket": "LGA1700", "wattage": 65, "tier": 6, "image": ""},
+    {"name": "Intel i3-14100 (4C/8T, 4.7GHz)", "price": 140, "socket": "LGA1700", "wattage": 60, "tier": 4, "image": ""},
+    {"name": "Intel i9-12900K (16C/24T, 5.2GHz)", "price": 330, "socket": "LGA1700", "wattage": 241, "tier": 8, "image": ""},
+    {"name": "AMD Ryzen 9 7950X3D (16C/32T, 5.7GHz)", "price": 650, "socket": "AM5", "wattage": 120, "tier": 10, "image": ""},
+    {"name": "AMD Ryzen 7 7800X3D (8C/16T, 5.0GHz)", "price": 380, "socket": "AM5", "wattage": 120, "tier": 9, "image": ""},
+    {"name": "AMD Ryzen 5 7600X (6C/12T, 5.3GHz)", "price": 230, "socket": "AM5", "wattage": 105, "tier": 7, "image": ""},
+    {"name": "AMD Ryzen 5 7500F (6C/12T, 5.0GHz)", "price": 160, "socket": "AM5", "wattage": 65, "tier": 6, "image": ""},
+    {"name": "AMD Ryzen 9 5900X (12C/24T, 4.8GHz)", "price": 350, "socket": "AM4", "wattage": 105, "tier": 8, "image": ""},
+    {"name": "AMD Ryzen 7 5700X (8C/16T, 4.6GHz)", "price": 190, "socket": "AM4", "wattage": 65, "tier": 7, "image": ""},
+    {"name": "AMD Ryzen 5 5600 (6C/12T, 4.4GHz)", "price": 130, "socket": "AM4", "wattage": 65, "tier": 5, "image": ""},
+    {"name": "AMD Ryzen 5 4500 (6C/12T, 4.1GHz)", "price": 75, "socket": "AM4", "wattage": 65, "tier": 3, "image": ""}
   ],
   "gpus": [
-    {
-      "name": "NVIDIA RTX 4090 24GB",
-      "price": 1700,
-      "wattage": 450,
-      "tier": 10,
-      "image": "https://m.media-amazon.com/images/I/719F1N-1GcL._AC_SL1500_.jpg"
-    },
-    {
-      "name": "NVIDIA RTX 4080 Super",
-      "price": 1000,
-      "wattage": 320,
-      "tier": 9,
-      "image": "https://m.media-amazon.com/images/I/71K2+D0+k2L._AC_SL1500_.jpg"
-    },
-    {
-      "name": "NVIDIA RTX 4070 Ti Super",
-      "price": 800,
-      "wattage": 285,
-      "tier": 8,
-      "image": "https://m.media-amazon.com/images/I/71O4P8AAyIL._AC_SL1500_.jpg"
-    },
-    {
-      "name": "AMD Radeon RX 7900 XTX",
-      "price": 950,
-      "wattage": 355,
-      "tier": 9,
-      "image": "https://m.media-amazon.com/images/I/81I-Gj1+M4L._AC_SL1500_.jpg"
-    },
-    {
-      "name": "AMD Radeon RX 7800 XT",
-      "price": 500,
-      "wattage": 263,
-      "tier": 7,
-      "image": "https://m.media-amazon.com/images/I/714+6g2+q1L._AC_SL1500_.jpg"
-    },
-    {
-      "name": "NVIDIA RTX 3060 12GB",
-      "price": 280,
-      "wattage": 170,
-      "tier": 4,
-      "image": "https://m.media-amazon.com/images/I/71M+uC9+cIL._AC_SL1500_.jpg"
-    }
+    {"name": "NVIDIA RTX 4090 (24GB GDDR6X)", "price": 1700, "wattage": 450, "tier": 10, "image": ""},
+    {"name": "NVIDIA RTX 4080 Super (16GB GDDR6X)", "price": 1000, "wattage": 320, "tier": 9, "image": ""},
+    {"name": "NVIDIA RTX 4070 Ti Super (16GB GDDR6X)", "price": 800, "wattage": 285, "tier": 8, "image": ""},
+    {"name": "NVIDIA RTX 4070 Super (12GB GDDR6X)", "price": 600, "wattage": 220, "tier": 7, "image": ""},
+    {"name": "NVIDIA RTX 4060 Ti (8GB GDDR6)", "price": 380, "wattage": 160, "tier": 6, "image": ""},
+    {"name": "NVIDIA RTX 4060 (8GB GDDR6)", "price": 290, "wattage": 115, "tier": 5, "image": ""},
+    {"name": "NVIDIA RTX 3060 Ti (8GB GDDR6)", "price": 340, "wattage": 200, "tier": 5, "image": ""},
+    {"name": "NVIDIA RTX 3050 (8GB GDDR6)", "price": 220, "wattage": 130, "tier": 3, "image": ""},
+    {"name": "AMD RX 7900 XTX (24GB GDDR6)", "price": 930, "wattage": 355, "tier": 9, "image": ""},
+    {"name": "AMD RX 7800 XT (16GB GDDR6)", "price": 500, "wattage": 263, "tier": 7, "image": ""},
+    {"name": "AMD RX 7700 XT (12GB GDDR6)", "price": 400, "wattage": 245, "tier": 6, "image": ""},
+    {"name": "AMD RX 7600 XT (16GB GDDR6)", "price": 330, "wattage": 190, "tier": 5, "image": ""},
+    {"name": "AMD RX 6700 XT (12GB GDDR6)", "price": 310, "wattage": 230, "tier": 5, "image": ""},
+    {"name": "AMD RX 6600 (8GB GDDR6)", "price": 200, "wattage": 132, "tier": 4, "image": ""},
+    {"name": "Intel Arc A770 (16GB GDDR6)", "price": 300, "wattage": 225, "tier": 5, "image": ""},
+    {"name": "Intel Arc A580 (8GB GDDR6)", "price": 180, "wattage": 185, "tier": 4, "image": ""}
   ],
   "motherboards": [
-    {
-      "name": "ASUS ROG Maximus Z790 Hero",
-      "price": 600,
-      "socket": "LGA1700",
-      "wattage": 70,
-      "image": "https://m.media-amazon.com/images/I/81x1+y+rQyL._AC_SL1500_.jpg"
-    },
-    {
-      "name": "MSI MPG Z790 Edge WiFi",
-      "price": 350,
-      "socket": "LGA1700",
-      "wattage": 60,
-      "image": "https://m.media-amazon.com/images/I/71u+q+m+x+L._AC_SL1500_.jpg"
-    },
-    {
-      "name": "Gigabyte B760 AORUS Elite",
-      "price": 190,
-      "socket": "LGA1700",
-      "wattage": 50,
-      "image": "https://m.media-amazon.com/images/I/81g+k+m+x+L._AC_SL1500_.jpg"
-    },
-    {
-      "name": "ASUS ROG Crosshair X670E Hero",
-      "price": 650,
-      "socket": "AM5",
-      "wattage": 75,
-      "image": "https://m.media-amazon.com/images/I/81x1+y+rQyL._AC_SL1500_.jpg"
-    },
-    {
-      "name": "MSI MAG B650 Tomahawk WiFi",
-      "price": 220,
-      "socket": "AM5",
-      "wattage": 55,
-      "image": "https://m.media-amazon.com/images/I/81g+k+m+x+L._AC_SL1500_.jpg"
-    }
+    {"name": "ASUS ROG Z790 Maximus (WiFi 7)", "price": 650, "socket": "LGA1700", "wattage": 60, "image": ""},
+    {"name": "MSI MPG Z790 Carbon WiFi", "price": 380, "socket": "LGA1700", "wattage": 55, "image": ""},
+    {"name": "ASUS Prime Z790-P", "price": 210, "socket": "LGA1700", "wattage": 50, "image": ""},
+    {"name": "Gigabyte B760 AORUS Elite", "price": 170, "socket": "LGA1700", "wattage": 45, "image": ""},
+    {"name": "MSI PRO H610M-E", "price": 80, "socket": "LGA1700", "wattage": 35, "image": ""},
+    {"name": "ROG Crosshair X670E Extreme", "price": 850, "socket": "AM5", "wattage": 70, "image": ""},
+    {"name": "ASUS TUF Gaming B650-Plus", "price": 200, "socket": "AM5", "wattage": 50, "image": ""},
+    {"name": "Gigabyte B650M DS3H", "price": 140, "socket": "AM5", "wattage": 45, "image": ""},
+    {"name": "ASRock A620M Pro RS", "price": 100, "socket": "AM5", "wattage": 40, "image": ""},
+    {"name": "MSI MAG B550 Tomahawk", "price": 160, "socket": "AM4", "wattage": 45, "image": ""},
+    {"name": "Gigabyte B450M DS3H V2", "price": 80, "socket": "AM4", "wattage": 35, "image": ""},
+    {"name": "ASUS Prime A320M-K", "price": 65, "socket": "AM4", "wattage": 30, "image": ""}
   ],
   "ram": [
-    {
-      "name": "Corsair Vengeance RGB 32GB DDR5 6000MHz",
-      "price": 140,
-      "wattage": 10,
-      "image": "https://m.media-amazon.com/images/I/61g+k+m+x+L._AC_SL1200_.jpg"
-    },
-    {
-      "name": "G.Skill Trident Z5 RGB 32GB DDR5 6400MHz",
-      "price": 160,
-      "wattage": 12,
-      "image": "https://m.media-amazon.com/images/I/61g+k+m+x+L._AC_SL1200_.jpg"
-    },
-    {
-      "name": "TeamGroup T-Force Delta RGB 16GB DDR4 3600MHz",
-      "price": 60,
-      "wattage": 8,
-      "image": "https://m.media-amazon.com/images/I/61g+k+m+x+L._AC_SL1200_.jpg"
-    }
+    {"name": "64GB DDR5 6400MHz (2x32) RGB", "price": 240, "wattage": 15, "tier": 0, "image": ""},
+    {"name": "32GB DDR5 6000MHz (2x16) CL30", "price": 125, "wattage": 12, "tier": 0, "image": ""},
+    {"name": "16GB DDR5 5200MHz (2x8) Crucial", "price": 70, "wattage": 10, "tier": 0, "image": ""},
+    {"name": "32GB DDR4 3600MHz (2x16) Vengeance", "price": 90, "wattage": 9, "tier": 0, "image": ""},
+    {"name": "16GB DDR4 3200MHz (2x8) RGB Pro", "price": 55, "wattage": 8, "tier": 0, "image": ""},
+    {"name": "8GB DDR4 2666MHz (1x8) Basic", "price": 20, "wattage": 5, "tier": 0, "image": ""}
   ],
   "storage": [
-    {
-      "name": "Samsung 990 PRO 2TB NVMe SSD",
-      "price": 180,
-      "wattage": 8,
-      "image": "https://m.media-amazon.com/images/I/71g+k+m+x+L._AC_SL1500_.jpg"
-    },
-    {
-      "name": "WD_BLACK SN850X 1TB NVMe SSD",
-      "price": 100,
-      "wattage": 7,
-      "image": "https://m.media-amazon.com/images/I/71g+k+m+x+L._AC_SL1500_.jpg"
-    },
-    {
-      "name": "Crucial P3 Plus 1TB NVMe SSD",
-      "price": 60,
-      "wattage": 5,
-      "image": "https://m.media-amazon.com/images/I/71g+k+m+x+L._AC_SL1500_.jpg"
-    }
+    {"name": "Samsung 990 Pro 4TB (NVMe Gen4)", "price": 320, "wattage": 9, "tier": 0, "image": ""},
+    {"name": "Crucial T700 2TB (NVMe Gen5 - 12GB/s)", "price": 270, "wattage": 12, "tier": 0, "image": ""},
+    {"name": "Kingston NV2 2TB (NVMe Gen4)", "price": 110, "wattage": 7, "tier": 0, "image": ""},
+    {"name": "WD Black SN850X 1TB (NVMe Gen4)", "price": 95, "wattage": 8, "tier": 0, "image": ""},
+    {"name": "Samsung 870 EVO 1TB (SATA SSD)", "price": 85, "wattage": 5, "tier": 0, "image": ""},
+    {"name": "WD Blue 500GB (SATA SSD)", "price": 40, "wattage": 4, "tier": 0, "image": ""},
+    {"name": "Seagate IronWolf 8TB (NAS HDD)", "price": 200, "wattage": 10, "tier": 0, "image": ""},
+    {"name": "WD Blue 2TB (7200RPM HDD)", "price": 60, "wattage": 8, "tier": 0, "image": ""}
   ],
   "coolers": [
-    {
-      "name": "NZXT Kraken Elite 360 RGB",
-      "price": 280,
-      "wattage": 20,
-      "image": "https://m.media-amazon.com/images/I/71g+k+m+x+L._AC_SL1500_.jpg"
-    },
-    {
-      "name": "Corsair iCUE H150i Elite LCD XT",
-      "price": 260,
-      "wattage": 25,
-      "image": "https://m.media-amazon.com/images/I/71g+k+m+x+L._AC_SL1500_.jpg"
-    },
-    {
-      "name": "DeepCool AK620 Digital Air Cooler",
-      "price": 80,
-      "wattage": 5,
-      "image": "https://m.media-amazon.com/images/I/71g+k+m+x+L._AC_SL1500_.jpg"
-    }
+    {"name": "NZXT Kraken Elite 360 (LCD)", "price": 280, "wattage": 25, "tier": 0, "image": ""},
+    {"name": "Arctic Liquid Freezer III 360", "price": 110, "wattage": 20, "tier": 0, "image": ""},
+    {"name": "Noctua NH-D15 (Air Cooler)", "price": 120, "wattage": 10, "tier": 0, "image": ""},
+    {"name": "Be Quiet! Dark Rock Pro 5", "price": 100, "wattage": 8, "tier": 0, "image": ""},
+    {"name": "Cooler Master Hyper 212 Black", "price": 35, "wattage": 5, "tier": 0, "image": ""},
+    {"name": "Stock Intel/AMD Cooler", "price": 0, "wattage": 5, "tier": 0, "image": ""}
   ],
   "cases": [
-    {
-      "name": "Lian Li O11 Vision Chrome",
-      "price": 140,
-      "wattage": 0,
-      "image": "https://m.media-amazon.com/images/I/71g+k+m+x+L._AC_SL1500_.jpg"
-    },
-    {
-      "name": "NZXT H9 Flow Dual-Chamber",
-      "price": 160,
-      "wattage": 0,
-      "image": "https://m.media-amazon.com/images/I/71g+k+m+x+L._AC_SL1500_.jpg"
-    },
-    {
-      "name": "Corsair 4000D Airflow",
-      "price": 105,
-      "wattage": 0,
-      "image": "https://m.media-amazon.com/images/I/71g+k+m+x+L._AC_SL1500_.jpg"
-    }
+    {"name": "Lian Li Lancool III (E-ATX)", "price": 160, "wattage": 0, "tier": 0, "image": ""},
+    {"name": "Phanteks NV7 (Showcase)", "price": 220, "wattage": 0, "tier": 0, "image": ""},
+    {"name": "Corsair 4000D Airflow (Mid)", "price": 105, "wattage": 0, "tier": 0, "image": ""},
+    {"name": "Fractal Design North (Wood Front)", "price": 140, "wattage": 0, "tier": 0, "image": ""},
+    {"name": "Cooler Master Q300L (Micro-ATX)", "price": 50, "wattage": 0, "tier": 0, "image": ""},
+    {"name": "Thermaltake Tower 200 (Mini-ITX)", "price": 130, "wattage": 0, "tier": 0, "image": ""}
   ],
   "psu": [
-    {
-      "name": "Corsair RM1000e 1000W 80+ Gold",
-      "price": 160,
-      "wattage": 0,
-      "image": "https://m.media-amazon.com/images/I/71g+k+m+x+L._AC_SL1500_.jpg"
-    },
-    {
-      "name": "ASUS ROG Thor 1200W Platinum II",
-      "price": 350,
-      "wattage": 0,
-      "image": "https://m.media-amazon.com/images/I/71g+k+m+x+L._AC_SL1500_.jpg"
-    },
-    {
-      "name": "MSI MPG A850G 850W 80+ Gold",
-      "price": 130,
-      "wattage": 0,
-      "image": "https://m.media-amazon.com/images/I/71g+k+m+x+L._AC_SL1500_.jpg"
-    }
+    {"name": "Seasonics Prime 1300W (Titanium)", "price": 380, "wattage": 0, "tier": 0, "image": ""},
+    {"name": "Corsair RM1200e (ATX 3.0)", "price": 200, "wattage": 0, "tier": 0, "image": ""},
+    {"name": "ASUS ROG Thor 850W Platinum", "price": 230, "wattage": 0, "tier": 0, "image": ""},
+    {"name": "Cooler Master V850 SFX (ITX)", "price": 160, "wattage": 0, "tier": 0, "image": ""},
+    {"name": "EVGA 750 N1 (Basic)", "price": 60, "wattage": 0, "tier": 0, "image": ""},
+    {"name": "Deepcool PK550D (Bronze)", "price": 50, "wattage": 0, "tier": 0, "image": ""}
   ]
 }
 
