@@ -77,14 +77,64 @@
     {"name": "Lexar Ares RGB 32GB-6400MHz", "price": 125, "wattage": 11, "tier": 0}
   ],
   "gpus": [
-    {"name": "MSI GeForce RTX 5090 (32GB GDDR7)", "price": 2000, "wattage": 500, "tier": 10},
-    {"name": "ASUS ROG Strix GeForce RTX 5090", "price": 2200, "wattage": 550, "tier": 10},
-    {"name": "MSI GeForce RTX 5080", "price": 1200, "wattage": 350, "tier": 9},
-    {"name": "ASUS ROG Strix RTX 4090", "price": 1900, "wattage": 450, "tier": 10},
-    {"name": "MSI RTX 4080 Super", "price": 1050, "wattage": 320, "tier": 9},
-    {"name": "Zotac RTX 4060 Twin Edge", "price": 300, "wattage": 115, "tier": 5},
-    {"name": "ASUS ROG Strix RTX 3080", "price": 750, "wattage": 320, "tier": 8},
-    {"name": "Sapphire Pulse RX 7900 XTX", "price": 980, "wattage": 355, "tier": 9}
+    /* NVIDIA RTX 50 Series */
+    {"name": "MSI GeForce RTX 5090 (32GB GDDR7)", "price": 2000, "wattage": 500, "tier": 10, "image": ""},
+    {"name": "ASUS ROG Strix RTX 5090", "price": 2200, "wattage": 550, "tier": 10, "image": ""},
+    {"name": "Gigabyte RTX 5090 Gaming OC", "price": 2050, "wattage": 500, "tier": 10, "image": ""},
+    {"name": "MSI RTX 5080 (16GB GDDR7)", "price": 1200, "wattage": 350, "tier": 9, "image": ""},
+    {"name": "ASUS ROG Strix RTX 5080", "price": 1350, "wattage": 400, "tier": 9, "image": ""},
+    {"name": "MSI RTX 5070 Ti", "price": 850, "wattage": 285, "tier": 8, "image": ""},
+    {"name": "ASUS TUF RTX 5070 Ti", "price": 890, "wattage": 300, "tier": 8, "image": ""},
+    {"name": "Gigabyte RTX 5070", "price": 650, "wattage": 220, "tier": 7, "image": ""},
+    {"name": "MSI RTX 5060 Ti", "price": 450, "wattage": 180, "tier": 6, "image": ""},
+    {"name": "ASUS ROG Strix RTX 5060 Ti", "price": 490, "wattage": 200, "tier": 6, "image": ""},
+    {"name": "Zotac RTX 5060 Twin Edge", "price": 330, "wattage": 130, "tier": 5, "image": ""},
+    {"name": "Gigabyte RTX 5050 OC", "price": 250, "wattage": 100, "tier": 4, "image": ""},
+
+    /* NVIDIA RTX 40 Series */
+    {"name": "NVIDIA RTX 4090 (24GB)", "price": 1700, "wattage": 450, "tier": 10, "image": ""},
+    {"name": "ASUS ROG Strix RTX 4090", "price": 1950, "wattage": 500, "tier": 10, "image": ""},
+    {"name": "MSI RTX 4080 Super", "price": 1050, "wattage": 320, "tier": 9, "image": ""},
+    {"name": "Gigabyte RTX 4070 Ti Super", "price": 820, "wattage": 285, "tier": 8, "image": ""},
+    {"name": "Zotac RTX 4070 AMP Trinity", "price": 620, "wattage": 220, "tier": 7, "image": ""},
+    {"name": "MSI RTX 4060 Ti (16GB)", "price": 450, "wattage": 165, "tier": 6, "image": ""},
+    {"name": "ASUS TUF RTX 4060", "price": 310, "wattage": 115, "tier": 5, "image": ""},
+
+    /* NVIDIA RTX 30 Series */
+    {"name": "MSI RTX 3090 Ti (24GB)", "price": 1100, "wattage": 450, "tier": 9, "image": ""},
+    {"name": "ASUS ROG Strix RTX 3080", "price": 750, "wattage": 320, "tier": 8, "image": ""},
+    {"name": "Gigabyte RTX 3070 Ti", "price": 550, "wattage": 290, "tier": 7, "image": ""},
+    {"name": "Zotac RTX 3060 AMP", "price": 300, "wattage": 170, "tier": 4, "image": ""},
+    {"name": "EVGA RTX 3050 XC", "price": 230, "wattage": 130, "tier": 3, "image": ""},
+
+    /* NVIDIA GTX / 16 Series */
+    {"name": "MSI GTX 1660 Super", "price": 200, "wattage": 125, "tier": 3, "image": ""},
+    {"name": "ASUS Phoenix GTX 1650", "price": 150, "wattage": 75, "tier": 2, "image": ""},
+    {"name": "Zotac GTX 1630", "price": 110, "wattage": 75, "tier": 1, "image": ""},
+
+    /* AMD Radeon RX 9000 Series (2026) */
+    {"name": "Sapphire RX 9070 XT (20GB)", "price": 900, "wattage": 320, "tier": 9, "image": ""},
+    {"name": "ASUS ROG Strix RX 9070 XT", "price": 980, "wattage": 350, "tier": 9, "image": ""},
+    {"name": "XFX RX 9060 XT (16GB)", "price": 550, "wattage": 240, "tier": 7, "image": ""},
+    {"name": "Gigabyte RX 9060 XT", "price": 530, "wattage": 230, "tier": 7, "image": ""},
+
+    /* AMD Radeon RX 7000 Series */
+    {"name": "Sapphire RX 7900 XTX Nitro+", "price": 1050, "wattage": 360, "tier": 9, "image": ""},
+    {"name": "XFX Speedster RX 7900 XT", "price": 780, "wattage": 315, "tier": 8, "image": ""},
+    {"name": "ASUS TUF RX 7800 XT", "price": 520, "wattage": 263, "tier": 7, "image": ""},
+    {"name": "MSI RX 7700 XT Gaming X", "price": 430, "wattage": 245, "tier": 6, "image": ""},
+    {"name": "Sapphire Pulse RX 7600 XT", "price": 330, "wattage": 190, "tier": 5, "image": ""},
+
+    /* AMD Radeon RX 6000 Series */
+    {"name": "ASUS ROG Strix RX 6900 XT", "price": 700, "wattage": 300, "tier": 8, "image": ""},
+    {"name": "Sapphire RX 6800 XT Pulse", "price": 500, "wattage": 300, "tier": 7, "image": ""},
+    {"name": "MSI RX 6700 XT Mech", "price": 340, "wattage": 230, "tier": 5, "image": ""},
+    {"name": "XFX RX 6600 XT Swift", "price": 260, "wattage": 160, "tier": 4, "image": ""},
+
+    /* Intel Arc Series */
+    {"name": "Intel Arc B580 (Battlemage)", "price": 280, "wattage": 190, "tier": 5, "image": ""},
+    {"name": "Intel Arc B570", "price": 230, "wattage": 150, "tier": 4, "image": ""},
+    {"name": "Intel Arc A380", "price": 120, "wattage": 75, "tier": 2, "image": ""}
   ],
   "motherboards": [
     {"name": "ASUS ROG MAXIMUS Z790 HERO", "price": 630, "socket": "LGA1700", "wattage": 60},
