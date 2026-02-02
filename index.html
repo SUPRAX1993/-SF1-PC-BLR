@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SF1-PC-BLR Pro Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SF1-PC-BLR Ultimate | منصة بناء التجميعات الاحترافية</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X3CRJB44J2"></script>
     <script>
@@ -12,99 +12,243 @@
       gtag('js', new Date());
       gtag('config', 'G-X3CRJB44J2');
     </script>
-
-    <meta property="og:site_name" content="SF1-PC-BLR">
-    <meta property="og:title" content="SF1-PC-BLR Pro Builder">
-    <meta property="og:description" content="ابنِ تجميعة أحلامك وافحص التوافق وعنق الزجاجة مجاناً مع أداة SUPRA1993 الذكية.">
+    <meta property="og:site_name" content="SF1-PC-BLR Ultimate">
+    <meta property="og:title" content="SF1-PC-BLR Ultimate Builder">
+    <meta property="og:description" content="المنصة الأذكى والأكثر تطوراً لبناء وفحص تجميعات الكمبيوتر. اكتشف قوة جهازك قبل الشراء.">
     <meta property="og:image" itemprop="image" content="https://opengraph.githubassets.com/1/supra1993/SF1-PC-BLR">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://supra1993.github.io/SF1-PC-BLR/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://opengraph.githubassets.com/1/supra1993/SF1-PC-BLR">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; color: #333; transition: 0.3s; }
-        body.dark-mode { background: #121212; color: #e0e0e0; }
+        /* --- متغيرات الألوان (CSS Variables) --- */
+        :root {
+            --bg-main: #f4f7f6;
+            --bg-panel: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #7f8c8d;
+            --accent-color: #3498db;
+            --accent-hover: #2980b9;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+            --warning: #f1c40f;
+            --border-color: #e0e0e0;
+            --panel-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --neon-glow: none;
+        }
+
+        [data-theme="dark"] {
+            --bg-main: #0a0a0a;
+            --bg-panel: #141414;
+            --text-primary: #ecf0f1;
+            --text-secondary: #bdc3c7;
+            --accent-color: #00f2c3; /* لون نيون سماوي */
+            --accent-hover: #00cba3;
+            --success: #00e676;
+            --danger: #ff1744;
+            --warning: #ffc400;
+            --border-color: #2c2c2c;
+            --panel-shadow: 0 10px 40px rgba(0, 242, 195, 0.15);
+            --neon-glow: 0 0 15px rgba(0, 242, 195, 0.4);
+        }
+
+        /* --- التنسيقات الأساسية --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-main); color: var(--text-primary); padding-bottom: 40px; overflow-x: hidden; }
         
-        header { text-align: center; margin-bottom: 30px; }
-        h1 { color: #1a73e8; margin: 0; font-size: 2.2rem; }
-        p { color: #666; }
-        body.dark-mode p { color: #aaa; }
+        /* --- الهيدر (الشريط العلوي) --- */
+        .app-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 40px; background: var(--bg-panel); box-shadow: var(--panel-shadow);
+            position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--border-color);
+        }
+        .logo-area h1 { font-family: 'Rajdhani', sans-serif; font-weight: 900; font-size: 2rem; letter-spacing: 1px; }
+        .logo-area span { color: var(--accent-color); text-shadow: var(--neon-glow); }
+        .header-actions button { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-primary); padding: 10px; border-radius: 50%; }
+        .header-actions button:hover { background: var(--border-color); color: var(--accent-color); }
 
-        .builder-container { display: flex; flex-wrap: wrap; gap: 20px; max-width: 1200px; margin: 0 auto; }
+        /* --- حاوية التطبيق الرئيسية --- */
+        .main-container {
+            display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px;
+            max-width: 1400px; margin: 40px auto; padding: 0 20px;
+        }
+
+        /* --- العناوين --- */
+        h2.section-title { font-size: 1.4rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        h2.section-title::before { content: ''; width: 5px; height: 25px; background: var(--accent-color); border-radius: 5px; box-shadow: var(--neon-glow); }
+
+        /* --- لوحات التحكم (الكروت) --- */
+        .panel { background: var(--bg-panel); border-radius: 20px; padding: 30px; box-shadow: var(--panel-shadow); border: 1px solid var(--border-color); height: fit-content; }
         
-        .controls, .preview { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .controls { flex: 2; min-width: 300px; }
-        .preview { flex: 1; min-width: 300px; text-align: center; position: sticky; top: 20px; height: fit-content; }
+        /* --- منطقة الاختيار (اليسار) --- */
+        .selection-grid { display: grid; gap: 20px; }
+        .input-group { position: relative; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 0.95rem; color: var(--text-secondary); }
+        .input-group select {
+            width: 100%; padding: 15px 20px; border: 2px solid var(--border-color); border-radius: 12px;
+            background: var(--bg-main); color: var(--text-primary); font-size: 1rem; font-family: 'Cairo';
+            appearance: none; cursor: pointer; background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27292.4%27%20height%3D%27292.4%27%3E%3Cpath%20fill%3D%27%237f8c8d%27%20d%3D%27M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-13%205.4A17.6%2017.6%200%200%200%200%2087.2c0%205%201.8%209.3%205.4%2013l128%20128c3.6%203.6%207.8%205.4%2013%205.4s9.3-1.8%2013-5.4l128-128c3.6-3.6%205.4-7.8%205.4-13%200-5-1.8-9.3-5.4-13z%27%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat; background-position: left 15px center; background-size: 12px;
+        }
+        .input-group select:focus { border-color: var(--accent-color); box-shadow: 0 0 0 4px rgba(0, 242, 195, 0.1); outline: none; }
+
+        /* --- منطقة المعاينة (اليمين - Dashboard) --- */
+        .dashboard-sticky { position: sticky; top: 110px; }
+        .preview-image-container {
+            width: 100%; height: 280px; background: var(--bg-main); border-radius: 15px;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+            border: 2px dashed var(--border-color); margin-bottom: 20px; position: relative;
+        }
+        #preview-img { max-width: 90%; max-height: 90%; object-fit: contain; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2)); }
+        .part-label { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; opacity: 0; }
+        .preview-image-container:hover .part-label { opacity: 1; }
+
+        /* --- عدادات الأداء والطاقة (المفاجأة!) --- */
+        .metrics-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+        .metric-box { background: var(--bg-main); padding: 15px; border-radius: 12px; text-align: center; border: 1px solid var(--border-color); }
+        .metric-title { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 5px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .metric-value { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.4rem; }
         
-        body.dark-mode .controls, body.dark-mode .preview { background: #1e1e1e; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        /* أشرطة التقدم */
+        .progress-bar-container { height: 8px; background: var(--border-color); border-radius: 4px; margin-top: 8px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; border-radius: 4px; width: 0%; transition: width 0.8s ease-out; }
 
-        .control-group { margin-bottom: 15px; text-align: right; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9rem; }
-        select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; background: #fafafa; font-size: 1rem; cursor: pointer; }
-        body.dark-mode select { background: #2d2d2d; color: white; border-color: #444; }
+        /* --- السعر الإجمالي --- */
+        .total-price-box {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+            color: #fff; padding: 25px; border-radius: 15px; text-align: center; margin-bottom: 25px;
+            box-shadow: var(--neon-glow); position: relative; overflow: hidden;
+        }
+        .total-price-box h3 { font-size: 1rem; opacity: 0.9; }
+        .total-price-box .price { font-family: 'Rajdhani', sans-serif; font-size: 3.5rem; font-weight: 900; line-height: 1.1; }
+        .total-price-box::after { content: '$'; position: absolute; font-size: 10rem; opacity: 0.1; top: -20px; right: -20px; font-family: 'Rajdhani'; }
 
-        .total-box { background: #e8f0fe; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #1a73e8; }
-        .total-price { font-size: 2.2rem; color: #1a73e8; font-weight: bold; }
-        body.dark-mode .total-box { background: #0d47a1; border-color: #1976d2; color: white; }
-        body.dark-mode .total-price { color: #fff; }
+        /* --- صناديق الحالة --- */
+        .status-alerts { display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px; }
+        .alert-box { padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 15px; font-weight: 600; font-size: 0.95rem; }
+        .alert-icon { font-size: 1.4rem; }
 
-        .status-box { padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 0.95rem; font-weight: 500; border: 1px solid #ddd; background: #f9f9f9; transition: 0.3s; }
-        body.dark-mode .status-box { background: #2d2d2d; border-color: #444; }
+        /* --- قائمة الملخص (المفاجأة!) --- */
+        .summary-list { list-style: none; margin-bottom: 25px; background: var(--bg-main); border-radius: 12px; padding: 15px; border: 1px solid var(--border-color); max-height: 200px; overflow-y: auto; }
+        .summary-list li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border-color); font-size: 0.9rem; }
+        .summary-list li:last-child { border-bottom: none; }
+        .summary-part-name { font-weight: 600; }
+        .summary-part-price { color: var(--text-secondary); font-family: 'Rajdhani'; }
 
-        #part-image { width: 100%; max-width: 250px; height: 250px; object-fit: contain; margin: 15px 0; border-radius: 10px; background: #fff; padding: 5px; border: 1px solid #eee; }
-        #part-name-display { font-weight: bold; color: #555; margin-bottom: 15px; min-height: 1.2em; }
-        body.dark-mode #part-name-display { color: #ccc; }
+        /* --- الأزرار --- */
+        .actions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .btn {
+            padding: 15px; border: none; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 1rem;
+            font-family: 'Cairo'; display: flex; align-items: center; justify-content: center; gap: 10px; color: white;
+        }
+        .btn-primary { background: var(--accent-color); box-shadow: var(--neon-glow); grid-column: span 2; font-size: 1.1rem; }
+        .btn-secondary { background: var(--bg-main); color: var(--text-primary); border: 2px solid var(--border-color); }
+        .btn:hover { transform: translateY(-3px); filter: brightness(1.1); }
+        .btn-reset { color: var(--danger); border-color: var(--danger); }
+        .btn-reset:hover { background: var(--danger); color: white; }
 
-        .btn-group { display: flex; flex-direction: column; gap: 10px; }
-        .btn { padding: 15px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem; color: white; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .btn-print { background: #28a745; }
-        .btn-share { background: #007bff; }
-        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
-
-        #dark-mode-toggle { position: fixed; top: 15px; left: 15px; width: 45px; height: 45px; border-radius: 50%; border: none; cursor: pointer; background: #333; color: white; font-size: 1.2rem; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        body.dark-mode #dark-mode-toggle { background: #f1c40f; color: #333; }
+        /* --- تجاوب الموبايل --- */
+        @media (max-width: 968px) {
+            .main-container { grid-template-columns: 1fr; }
+            .dashboard-sticky { position: static; order: -1; /* المعاينة تظهر أولاً في الموبايل */ }
+            .app-header { padding: 15px 20px; }
+            .logo-area h1 { font-size: 1.5rem; }
+            .total-price-box .price { font-size: 2.8rem; }
+        }
     </style>
 </head>
 <body>
 
-    <button id="dark-mode-toggle" title="تبديل الوضع">🌙</button>
-
-    <header>
-        <h1>SF1-PC-BLR Pro</h1>
-        <p>مصمم التجميعات الذكي بواسطة SUPRA1993</p>
+    <header class="app-header">
+        <div class="logo-area">
+            <h1>SF1-PC <span>ULTIMATE</span></h1>
+        </div>
+        <div class="header-actions">
+            <button id="theme-toggle" title="تبديل المظهر">🌙</button>
+        </div>
     </header>
 
-    <div class="builder-container">
-        <div class="controls">
-            <div class="control-group"><label>🔌 المعالج (CPU)</label><select id="cpu-select"></select></div>
-            <div class="control-group"><label>🎮 كارت الشاشة (GPU)</label><select id="gpu-select"></select></div>
-            <div class="control-group"><label>📟 اللوحة الأم (Motherboard)</label><select id="mobo-select"></select></div>
-            <div class="control-group"><label>💾 الرامات (RAM)</label><select id="ram-select"></select></div>
-            <div class="control-group"><label>💿 التخزين (Storage)</label><select id="storage-select"></select></div>
-            <div class="control-group"><label>❄️ المبرد (Cooler)</label><select id="cooler-select"></select></div>
-            <div class="control-group"><label>📦 الصندوق (Case)</label><select id="case-select"></select></div>
-            <div class="control-group"><label>⚡ مزود الطاقة (PSU)</label><select id="psu-select"></select></div>
-        </div>
-
-        <div class="preview">
-            <div class="total-box">
-                <span style="font-size: 0.9rem;">المجموع التقديري</span>
-                <div class="total-price">$<span id="total-price">0</span></div>
+    <main class="main-container">
+        
+        <section class="panel dashboard-sticky">
+            <h2 class="section-title">مركز المعاينة والأداء</h2>
+            
+            <div class="preview-image-container">
+                <img id="preview-img" src="https://placehold.co/600x400/141414/00f2c3?text=SF1+ULTIMATE+BUILDER&font=rajdhani" alt="PC Preview">
+                <div class="part-label" id="preview-label">جاري انتظار اختيار القطع...</div>
             </div>
 
-            <div id="compatibility-check" class="status-box">الرجاء اختيار القطع للفحص...</div>
-            <div id="bottleneck-check" class="status-box">عنق الزجاجة: --</div>
-
-            <img id="part-image" src="https://placehold.co/400x400/eee/999?text=Preview" alt="صورة القطعة">
-            <div id="part-name-display">اختر قطعة لمعاينتها</div>
-
-            <div class="btn-group">
-                <button class="btn btn-print" onclick="window.print()">🖨️ طباعة التجميعة</button>
-                <button id="share-btn" class="btn btn-share">📋 نسخ التجميعة للمشاركة</button>
+            <div class="metrics-container">
+                <div class="metric-box">
+                    <div class="metric-title">⚡ استهلاك الطاقة (واط)</div>
+                    <div class="metric-value" id="wattage-value">0 W</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="wattage-bar" style="width: 0%; background: var(--warning);"></div>
+                    </div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-title">🚀 نتيجة الأداء (Gaming Score)</div>
+                    <div class="metric-value" id="score-value">0 / 100</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="score-bar" style="width: 0%; background: var(--success);"></div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+
+            <div class="total-price-box">
+                <h3>إجمالي الاستثمار</h3>
+                <div class="price">$<span id="total-price-display">0</span></div>
+            </div>
+
+            <div class="status-alerts">
+                <div id="compatibility-alert" class="alert-box" style="background: var(--bg-main); color: var(--text-secondary);">
+                    <span class="alert-icon">ℹ️</span>
+                    <span id="comp-text">ابدأ باختيار المعالج واللوحة الأم للفحص...</span>
+                </div>
+                <div id="bottleneck-alert" class="alert-box" style="background: var(--bg-main); color: var(--text-secondary);">
+                    <span class="alert-icon">ℹ️</span>
+                    <span id="bottle-text">تحليل عنق الزجاجة غير نشط...</span>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1rem; margin-bottom: 10px;">ملخص التجميعة الحالية:</h3>
+            <ul class="summary-list" id="build-summary">
+                <li style="text-align: center; color: var(--text-secondary);">لم يتم اختيار قطع بعد</li>
+            </ul>
+
+            <div class="actions-grid">
+                <button class="btn btn-primary" id="share-btn">📋 نسخ التقرير الشامل للمشاركة</button>
+                <button class="btn btn-secondary" onclick="window.print()">🖨️ طباعة</button>
+                <button class="btn btn-secondary btn-reset" id="reset-btn">🔄 إعادة تعيين</button>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2 class="section-title">اختر مكونات جهازك</h2>
+            <div class="selection-grid">
+                
+                <div style="background: var(--bg-main); padding: 20px; border-radius: 15px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-bottom: 15px; color: var(--accent-color);">⚙️ القطع الأساسية (Core)</h3>
+                    <div class="input-group" style="margin-bottom: 15px;"><label>وحدة المعالجة المركزية (CPU)</label><select id="cpu-select"></select></div>
+                    <div class="input-group"><label>اللوحة الأم (Motherboard)</label><select id="mobo-select"></select></div>
+                </div>
+
+                <div style="background: var(--bg-main); padding: 20px; border-radius: 15px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-bottom: 15px; color: var(--success);">🎮 الأداء والرسومات</h3>
+                     <div class="input-group" style="margin-bottom: 15px;"><label>بطاقة الرسوميات (GPU)</label><select id="gpu-select"></select></div>
+                    <div class="input-group"><label>الذاكرة العشوائية (RAM)</label><select id="ram-select"></select></div>
+                </div>
+
+                <div class="input-group"><label>💿 وحدة التخزين (Storage)</label><select id="storage-select"></select></div>
+                <div class="input-group"><label>❄️ نظام التبريد (Cooler)</label><select id="cooler-select"></select></div>
+                <div class="input-group"><label>📦 صندوق الحاسب (Case)</label><select id="case-select"></select></div>
+                <div class="input-group"><label>⚡ مزود الطاقة (PSU)</label><select id="psu-select"></select></div>
+            </div>
+        </section>
+
+    </main>
 
     <script src="script.js"></script>
 </body>
