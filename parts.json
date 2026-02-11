@@ -1,33 +1,19 @@
 {
-  "buy_ads": [
+  "total_balance": 162.4,
+  "assets": [
     {
-      "merchant": "Al-Mubdi_Trader",
-      "price": 162.4,
-      "currency": "USD",
-      "crypto": "USDT",
-      "method": "Bank Transfer",
-      "limit": "100 - 1000",
-      "completion": "100%"
+      "name": "Tether",
+      "symbol": "USDT",
+      "balance": "100.00",
+      "value_usd": "100.00",
+      "change": "+0.01%"
     },
     {
-      "merchant": "Crypto_King",
-      "price": 165.0,
-      "currency": "USD",
-      "crypto": "USDT",
-      "method": "STC Pay",
-      "limit": "50 - 500",
-      "completion": "98.5%"
-    }
-  ],
-  "sell_ads": [
-    {
-      "merchant": "Fast_Exchanger",
-      "price": 160.2,
-      "currency": "USD",
-      "crypto": "USDT",
-      "method": "PayPal",
-      "limit": "20 - 200",
-      "completion": "95%"
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "balance": "0.00125",
+      "value_usd": "62.40",
+      "change": "+2.45%"
     }
   ]
 }

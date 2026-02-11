@@ -71,3 +71,18 @@ header {
     border-radius: 10px;
 }
 
+.coin-icon-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #fff; /* خلفية بيضاء بسيطة للأيقونات الشفافة */
+    padding: 2px;
+}
+
+/* تحسين شكل الأرقام */
+.asset-balance {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+

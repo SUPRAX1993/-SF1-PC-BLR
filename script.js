@@ -1,55 +1,36 @@
-let adsData = {};
-
 document.addEventListener('DOMContentLoaded', () => {
     fetch('parts.json')
         .then(res => res.json())
         .then(data => {
-            adsData = data;
-            showAds('buy'); // العرض الافتراضي
+            // تحديث الرصيد الإجمالي من ملف الـ JSON
+            document.getElementById('balance-val').innerText = data.total_balance.toLocaleString();
+
+            // روابط الأيقونات الرسمية
+            const iconUrls = {
+                "USDT": "https://cryptologos.cc/logos/tether-usdt-logo.png",
+                "BTC": "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
+                "ETH": "https://cryptologos.cc/logos/ethereum-eth-logo.png"
+            };
+
+            // عرض العملات في القائمة
+            const list = document.getElementById('assets-list');
+            list.innerHTML = data.assets.map(coin => `
+                <div class="asset-item">
+                    <div class="asset-left">
+                        <img src="${iconUrls[coin.symbol] || 'https://via.placeholder.com/32'}" class="coin-icon-img" alt="${coin.symbol}">
+                        <div>
+                            <span class="coin-name">${coin.symbol}</span>
+                            <span class="coin-change" style="color: ${coin.change.startsWith('+') ? 'var(--green)' : 'var(--red)'}">
+                                ${coin.change}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="asset-right" dir="ltr">
+                        <span class="asset-balance">${coin.balance}</span>
+                        <span class="asset-usd">≈ ${coin.value_usd} USD</span>
+                    </div>
+                </div>
+            `).join('');
         });
 });
-
-function showAds(type) {
-    const container = document.getElementById('ads-container');
-    const list = type === 'buy' ? adsData.buy_ads : adsData.sell_ads;
-    
-    // تحديث شكل الأزرار
-    document.getElementById('buy-tab').className = type === 'buy' ? 'active' : '';
-    document.getElementById('sell-tab').className = type === 'sell' ? 'active' : '';
-
-    container.innerHTML = list.map(ad => `
-        <div class="ad-card">
-            <div class="merchant-info">
-                <strong>${ad.merchant}</strong>
-                <span>تكتمل بنسبة ${ad.completion}</span>
-            </div>
-            <div class="price-info">
-                <span class="label">السعر</span>
-                <h2 class="price">${ad.price} ${ad.currency}</h2>
-            </div>
-            <div class="limit-info">
-                <p>الحدود: ${ad.limit} ${ad.currency}</p>
-                <p>طريقة الدفع: <span class="method">${ad.method}</span></p>
-            </div>
-            <button class="btn-trade" onclick="openTrade('${ad.merchant}', ${ad.price})">
-                ${type === 'buy' ? 'شراء USDT' : 'بيع USDT'}
-            </button>
-        </div>
-    `).join('');
-}
-
-function openTrade(name, price) {
-    const modal = document.getElementById('trade-modal');
-    document.getElementById('modal-body').innerHTML = `
-        <p>أنت تتعامل مع: <strong>${name}</strong></p>
-        <p>السعر المثبت: <strong>${price} USD</strong></p>
-        <input type="number" placeholder="أدخل المبلغ الذي تود دفعه..." id="amount-input">
-        <p>ستستلم تقريباً: <span id="receive-amount">0</span> USDT</p>
-    `;
-    modal.style.display = 'block';
-}
-
-function closeModal() {
-    document.getElementById('trade-modal').style.display = 'none';
-}
 

@@ -3,27 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة P2P للتبادل الرقمي</title>
+    <title>Binance Wallet | المحفظة</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>سوق التبادل المباشر (P2P)</h1>
-        <div class="tabs">
-            <button onclick="showAds('buy')" id="buy-tab" class="active">شراء</button>
-            <button onclick="showAds('sell')" id="sell-tab">بيع</button>
-        </div>
-    </header>
+    <div class="app-container">
+        <section class="wallet-header">
+            <p class="label">إجمالي الرصيد المقدر</p>
+            <h1 class="total-balance"><span id="balance-val">0.00</span> <small>USD</small></h1>
+            <p class="sub-balance">≈ 0.00000000 BTC</p>
+            
+            <div class="action-buttons">
+                <button class="btn-yellow">إيداع</button>
+                <button class="btn-gray">سحب</button>
+                <button class="btn-gray">تحويل</button>
+            </div>
+        </section>
 
-    <main id="ads-container">
-        </main>
-
-    <div id="trade-modal" class="modal">
-        <div class="modal-content">
-            <h2 id="modal-title">تنفيذ طلب</h2>
-            <div id="modal-body"></div>
-            <button class="btn-main" onclick="closeModal()">إلغاء</button>
-        </div>
+        <section class="assets-section">
+            <div class="section-title">
+                <h3>الأصول</h3>
+                <span>عرض الكل</span>
+            </div>
+            <div id="assets-list">
+                </div>
+        </section>
     </div>
 
     <script src="script.js"></script>
