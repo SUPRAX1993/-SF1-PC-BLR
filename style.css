@@ -1,81 +1,73 @@
-/* إعدادات الخط والألوان الأساسية */
 :root {
-    --bg-color: #f4f6f8;
-    --card-bg: #ffffff;
-    --primary-color: #2962ff;
-    --text-color: #333333;
-    --accent-color: #00e676;
+    --primary: #f3ba2f; /* لون باينانس الشهير */
+    --bg: #0b0e11;
+    --card: #1e2329;
+    --text: #eaecef;
+    --success: #0ecb81;
+    --danger: #f6465d;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background: var(--bg);
+    color: var(--text);
+    font-family: sans-serif;
     margin: 0;
-    padding: 0;
-    line-height: 1.6;
 }
 
-/* الهيدر */
 header {
-    background-color: var(--card-bg);
     padding: 20px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: var(--card);
 }
 
-header h1 {
-    color: var(--primary-color);
-    margin: 0;
-    font-size: 1.8rem;
+.tabs button {
+    background: none;
+    border: none;
+    color: var(--text);
+    padding: 10px 30px;
+    font-size: 18px;
+    cursor: pointer;
 }
 
-/* القائمة */
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+.tabs button.active {
+    border-bottom: 3px solid var(--primary);
+    color: var(--primary);
 }
 
-nav a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: bold;
-}
-
-/* الحاوية الرئيسية */
-main {
+.ad-card {
+    background: var(--card);
+    margin: 15px;
     padding: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-/* تصميم الكروت (التجميعات) */
-.card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    padding: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.buy-btn {
-    display: block;
-    width: 100%;
-    background-color: var(--accent-color);
-    color: white;
-    text-align: center;
-    padding: 10px;
     border-radius: 8px;
-    text-decoration: none;
-    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price { color: var(--success); margin: 5px 0; }
+
+.btn-trade {
+    background: var(--success);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    background: var(--card);
+    width: 90%; max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 10px;
 }
 
